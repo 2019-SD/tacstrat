@@ -1,3 +1,9 @@
+/*
+    This is the main file for the project.
+    Authors: Team Titans
+
+ */
+
 package com.example.tacstratgame;
 
 import android.support.v7.app.AppCompatActivity;
