@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="map0">
+        <item>#8</item>
+        <item>#8</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>k</item>
+        <item>f</item>
+        <item>l</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>l</item>
+        <item>k</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>k</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+
+        <item>k</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>k</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+
+        <item>l</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>f</item>
+        <item>k</item>
+
+        <item>f</item>
+        <item>l</item>
+        <item>f</item>
+        <item>k</item>
+        <item>l</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>l</item>
+        <item>k</item>
+        <item>f</item>
+        <item>l</item>
+    </array>
+</resources>
