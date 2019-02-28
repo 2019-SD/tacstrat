@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import static android.graphics.Color.WHITE;
 
-// To-Do: Comment, clean
 public class Map {
     private Tile[][] map;
     private Resources resources;
@@ -40,7 +39,7 @@ public class Map {
             gridPointer++;
         }
         for (int i = -4; i <= ((width + 1)/2); i++) {
-            int xPosition = (screenWidth / 2) + (i * interval);
+            int xPosition = (screenWidth / 2) + (i * interval)-1;
             if (i == -4) xPosition += 1;
             if (i == 4) xPosition += -1;
             grid[gridPointer] = xPosition;
@@ -63,12 +62,12 @@ public class Map {
     }
 
     public void draw(Canvas canvas) {
-        canvas.drawLines(grid,gridPaint);
-        for(int i = 0; i < width; i++){
-            for(int j = 0; j < height; j++){
-                Bitmap bit = BitmapFactory.decodeResource(resources,map[i][j].getPicture());
-                bit = Bitmap.createScaledBitmap(bit,130,130,false); // Resize the image to all be the same size
-                canvas.drawBitmap(bit, (screenWidth -1) -(i*interval) -bit.getWidth(),(screenHeight / 2) + ((j - 4) * interval)+1, null);
+        canvas.drawLines(grid, gridPaint);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
+                bit = Bitmap.createScaledBitmap(bit, interval-1, interval-1, false); // Resize the image to all be the same size
+                canvas.drawBitmap(bit, (screenWidth - 1) - (i * interval) - bit.getWidth(), (screenHeight / 2) + ((j - 4) * interval) + 1, null);
             }
         }
     }
@@ -107,12 +106,19 @@ public class Map {
             tile = level.getString(index);
 
             // Each letter represents a different type of tile
-            if(tile.equals("l")){
-                map[row][column] = new Tile(R.drawable.lightning_circle, 1, 2);
-            }else if (tile.equals("k")){
-                map[row][column] = new Tile(R.drawable.kbpix, 2, 1);
-            }else if (tile.equals("f")) {
-                map[row][column] = new Tile(R.drawable.fivepix, 5, 0);
+            switch(tile){
+                case "s":
+                    map[row][column] = new Tile(R.drawable.sand_tile, 2, 2);
+                    break;
+                case "b":
+                    map[row][column] = new Tile(R.drawable.building_tile, -1, 1);
+                    break;
+                case "f":
+                    map[row][column] = new Tile(R.drawable.standard_tile, 1, 0);
+                    break;
+                case "w":
+                    map[row][column] = new Tile(R.drawable.water_tile, 3, 0);
+                    break;
             }
             index++;
             column++;
