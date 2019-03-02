@@ -12,10 +12,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Sets display to menu on initialization
         setContentView(R.layout.activity_main);
+
+        // Initialize start button
         Button start = findViewById(R.id.button);
 
-
+        // Listener for start button to switch to GameView and locks game to fullscreen
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
