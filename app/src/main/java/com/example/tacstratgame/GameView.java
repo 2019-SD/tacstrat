@@ -26,7 +26,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        map = new Map(0, getResources()); // Makes and loads a map number
+        map = new Map(3, getResources()); // Makes and loads a map number
         thread.setRunning(true);
         thread.start();
     }

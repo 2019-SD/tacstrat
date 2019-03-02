@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+
 import static android.graphics.Color.WHITE;
 
 public class Map {
@@ -13,7 +14,9 @@ public class Map {
     private Resources resources;
     private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
-    int interval;
+    private int interval;
+    private int unusedPix;
+    private int startheight;
     private int width;
     private int height;
     private float[] grid;
@@ -23,32 +26,34 @@ public class Map {
         resources = res;
         loadMap(mapNum);
         grid = new float[(width+1)*4+(height+1)*4];
-        interval = screenWidth/width; //Size of each of the tiles
+        interval = ((screenWidth-(width+1))/width)+1; //The distance from one gridline to the next
+        unusedPix = screenWidth - (((interval-1) * width) + width+1); //The number of pixels that will be unused for the width (range from 0 to width-1)
         int gridPointer = 0; //Current position in the grid array
 
         //Sets the start and end points of the lines of the grid
-        for (int i = -4; i <= ((height + 1)/2); i++) {
-            int yPosition = (screenHeight / 2) + (i * interval);
-            grid[gridPointer] = 0;
+        startheight = (screenHeight/2)-(interval * (height/2)); //The smallest y position for an even height map
+        if(height % 2 == 1) {
+            startheight -= (interval / 2 + 1); //The smallest y position for an odd height map
+        }
+        for (int i = 0; i <= height; i++) {
+            int yPosition = startheight + (i * interval);
+            grid[gridPointer] = 0 + (unusedPix/2); //(Smaller) Half of the unused pixels at the start
             gridPointer++;
             grid[gridPointer] = yPosition;
             gridPointer++;
-            grid[gridPointer] = screenWidth;
+            grid[gridPointer] = screenWidth - ((unusedPix/2) + (unusedPix%2) + 1); //(Larger) Half of the unused pixels at the end
             gridPointer++;
             grid[gridPointer] = yPosition;
             gridPointer++;
         }
-        for (int i = -4; i <= ((width + 1)/2); i++) {
-            int xPosition = (screenWidth / 2) + (i * interval)-1;
-            if (i == -4) xPosition += 1;
-            if (i == 4) xPosition += -1;
-            grid[gridPointer] = xPosition;
+        for (int i = unusedPix/2; i < screenWidth; i+= interval) {
+            grid[gridPointer] = i;
             gridPointer++;
-            grid[gridPointer] = (screenHeight / 2) - (4 * interval);
+            grid[gridPointer] = startheight;
             gridPointer++;
-            grid[gridPointer] = xPosition;
+            grid[gridPointer] = i;
             gridPointer++;
-            grid[gridPointer] = (screenHeight / 2) + (4 * interval);
+            grid[gridPointer] = startheight + (height * interval);
             gridPointer++;
         }
         gridPaint = new Paint();
@@ -67,7 +72,7 @@ public class Map {
             for (int j = 0; j < height; j++) {
                 Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
                 bit = Bitmap.createScaledBitmap(bit, interval-1, interval-1, false); // Resize the image to all be the same size
-                canvas.drawBitmap(bit, (screenWidth - 1) - (i * interval) - bit.getWidth(), (screenHeight / 2) + ((j - 4) * interval) + 1, null);
+                canvas.drawBitmap(bit, 1 + (unusedPix/2) + (interval*i), 1 + startheight + (interval*j), null);
             }
         }
     }
@@ -83,11 +88,22 @@ public class Map {
     public int loadMap(int mapNum){
         TypedArray level;
 
-        //If statement can be expanded to include more levels as made
-        if (mapNum == 0){
-            level = resources.obtainTypedArray(R.array.map0);
-        }else{
-            return -1;
+        //Case statement can be expanded to include more levels as made
+        switch (mapNum){
+            case 0:
+                level = resources.obtainTypedArray(R.array.map0);
+                break;
+            case 1:
+                level = resources.obtainTypedArray(R.array.test10);
+                break;
+            case 2:
+                level = resources.obtainTypedArray(R.array.test11);
+                break;
+            case 3:
+                level = resources.obtainTypedArray(R.array.rect11x15);
+                break;
+            default:
+                return -1;
         }
 
         int index = 0;
@@ -119,6 +135,8 @@ public class Map {
                 case "w":
                     map[row][column] = new Tile(R.drawable.water_tile, 3, 0);
                     break;
+                default:
+                    map[row][column] = new Tile(R.drawable.lightning_circle,-1,-1);
             }
             index++;
             column++;
