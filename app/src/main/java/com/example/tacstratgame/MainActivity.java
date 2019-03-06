@@ -1,3 +1,7 @@
+/*
+  Class will be tested with an instrumented test.
+ */
+
 package com.example.tacstratgame;
 
 import android.app.Activity;

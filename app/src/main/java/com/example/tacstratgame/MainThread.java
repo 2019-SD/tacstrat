@@ -1,3 +1,7 @@
+/*
+  Class will be tested with a instrumented test (or no test).
+ */
+
 package com.example.tacstratgame;
 
 import android.graphics.Canvas;

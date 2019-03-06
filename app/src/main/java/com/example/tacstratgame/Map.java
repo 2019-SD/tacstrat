@@ -1,3 +1,7 @@
+/*
+  Class will be tested with a local test. (Junit)
+ */
+
 package com.example.tacstratgame;
 
 import android.content.res.Resources;

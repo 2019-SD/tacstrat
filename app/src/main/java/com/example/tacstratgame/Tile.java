@@ -3,6 +3,8 @@ package com.example.tacstratgame;
 /**
  * Class that holds the information for a specific tile on a map. Parameters can only be changed
  * upon instantiation of the Tile.
+ *
+ * Class will be tested with a local test. (Junit)
  */
 public class Tile {
     private int picture; //The integer pointing to the image in drawable
