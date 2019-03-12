@@ -6,10 +6,14 @@ public interface Unit {
     int getHp();
     int getMvmt();
     int getRange();
+    int getX();
+    int getY();
 
     void setAttack(int attack);
     void setDefense(int defense);
     void setHp(int hp);
     void setMvmt(int mvmt);
     void setRange(int range);
+    void setX(int x);
+    void setY(int y);
 }

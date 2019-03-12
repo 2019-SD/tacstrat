@@ -1,7 +1,3 @@
-/*
-  Class will be tested with a local test. (Junit)
- */
-
 package com.example.tacstratgame;
 
 import android.content.res.Resources;
@@ -25,8 +21,11 @@ public class Map {
     private int height;
     private float[] grid;
     private Paint gridPaint;
+    int drawMove;
+    private boolean[][] visited;
 
     public Map(int mapNum, Resources res) {
+        drawMove = 0;
         resources = res;
         loadMap(mapNum);
         grid = new float[(width+1)*4+(height+1)*4];
@@ -69,19 +68,36 @@ public class Map {
     public Tile getTile(int x, int y){
         return map[x][y];
     }
+    public float[] getGridArray(){return grid;}
 
     public void draw(Canvas canvas) {
         canvas.drawLines(grid, gridPaint);
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
-                bit = Bitmap.createScaledBitmap(bit, interval-1, interval-1, false); // Resize the image to all be the same size
-                canvas.drawBitmap(bit, 1 + (unusedPix/2) + (interval*i), 1 + startheight + (interval*j), null);
+        if (drawMove == 0) { // Simply draws the map
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
+                    Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
+                    bit = Bitmap.createScaledBitmap(bit, interval - 1, interval - 1, false); // Resize the image to all be the same size
+                    canvas.drawBitmap(bit, 1 + (unusedPix / 2) + (interval * i), 1 + startheight + (interval * j), null);
+                }
+            }
+        }else { // Draws the map and highlights the most recent movement range of a unit
+            Bitmap highlight = BitmapFactory.decodeResource(resources, R.drawable.standard_tile);
+            highlight = Bitmap.createScaledBitmap(highlight, interval - 1, interval - 1, false);
+            highlight.setHasAlpha(true);
+            highlight.eraseColor(0x4D0000FF); // 70% transparent
+            for (int i = 0; i < width; i++) {
+                for (int j = 0; j < height; j++) {
+                    Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
+                    bit = Bitmap.createScaledBitmap(bit, interval - 1, interval - 1, false); // Resize the image to all be the same size
+                    canvas.drawBitmap(bit, 1 + (unusedPix / 2) + (interval * i), 1 + startheight + (interval * j), null);
+                    if (visited[i][j]){
+                        canvas.drawBitmap(highlight, 1 + (unusedPix / 2) + (interval * i), 1 + startheight + (interval * j), null);
+                    }
+                }
             }
         }
     }
     public void update() {
-
     }
 
     /**
@@ -150,5 +166,47 @@ public class Map {
             }
         }
         return 0;
+    }
+
+    /**
+     * A function that turns all the tiles a unit can move to to 'true' in the visited global array
+     * @param unit The unit to move
+     */
+    public void move(Unit unit){
+        drawMove = 0; // Ensure this doesn't get drawn until its done
+        visited = new boolean[width][height];
+        int movement = unit.getMvmt();
+        int x = unit.getX(); //The width location on the grid where the unit is
+        int y = unit.getY(); //The height location on the grid where the unit is
+        movespread(x-1, y, movement);
+        movespread(x+1, y, movement);
+        movespread(x, y-1, movement);
+        movespread(x, y+1, movement);
+        visited[x][y] = false; //The square the unit is on should not be able to be moved to
+        drawMove = 1; // The visited range is ready to draw
+    }
+
+    /**
+     * A helper function that finds a units movement range by recursively stepping through all
+     * possible permutations. Starts to have significant performance drops at around ten movement.
+     * @param x the current width value being tested
+     * @param y the current height value being tested
+     * @param movement the remaining movement range
+     */
+    private void movespread(int x, int y, int movement) {
+        if (x < 0 || y < 0 || x >= width || y >= height ){
+            return;
+        }
+        Tile tile = map[x][y];
+        if (movement < tile.getMovementReduction() || tile.getMovementReduction() == -1){
+            return;
+        }else{
+            movement = movement - tile.getMovementReduction();
+            visited[x][y] = true;
+            movespread(x-1, y, movement);
+            movespread(x+1, y, movement);
+            movespread(x, y-1, movement);
+            movespread(x, y+1, movement);
+        }
     }
 }

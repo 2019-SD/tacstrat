@@ -9,6 +9,13 @@ public class Medic implements Unit {
     private int hp = 150;
     private int mvmt = 2;
     private int range = 1;
+    private int x;
+    private int y;
+
+    public Medic(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     // Getters
     public int getHeal( ) {
@@ -29,6 +36,8 @@ public class Medic implements Unit {
     public int getRange(){
         return range;
     }
+    public int getX() { return x; }
+    public int getY() { return y; }
 
     // Setters
     public void setHeal(int heal) {
@@ -50,6 +59,9 @@ public class Medic implements Unit {
     public void setRange(int range){
         this.range = range;
     }
+    public void setX(int x) { this.x = x; }
+    public void setY(int y) { this.y = y; }
+
 
     public void printStats( ) {
         System.out.printf( "Medic Stats:\n Heal: %d\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", heal, attack, defense, hp, mvmt, range );
@@ -57,7 +69,7 @@ public class Medic implements Unit {
     }
 
     public static void main( String []args ) {
-        Medic med = new Medic();
+        Medic med = new Medic(0,0);
         med.printStats();
     }
 }

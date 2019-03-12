@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Map built with width in hex, height in hex, then the bottom row sequentially, then the row above, etc.-->
     <array name="map0">
         <item>#8</item>
         <item>#8</item>

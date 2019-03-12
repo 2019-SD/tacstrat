@@ -7,6 +7,13 @@ public class Infantry implements Unit {
     private int hp = 300;
     private int mvmt = 3;
     private int range = 1;
+    private int x;
+    private int y;
+
+    public Infantry(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 
     public int getAttack() {
         return attack;
@@ -23,6 +30,8 @@ public class Infantry implements Unit {
     public int getRange(){
         return range;
     }
+    public int getX() { return x; }
+    public int getY() { return y; }
 
     public void setAttack(int attack){
         this.attack = attack;
@@ -39,6 +48,8 @@ public class Infantry implements Unit {
     public void setRange(int range){
         this.range = range;
     }
+    public void setX(int x) { this.x = x; }
+    public void setY(int y) { this.y = y; }
 
     public void printStats( ) {
         System.out.printf( "Infantry Stats:\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", attack, defense, hp, mvmt, range );
@@ -46,7 +57,7 @@ public class Infantry implements Unit {
     }
 
     public static void main( String []args ) {
-        Infantry inf = new Infantry();
+        Infantry inf = new Infantry(0,0);
         inf.printStats();
     }
 }
