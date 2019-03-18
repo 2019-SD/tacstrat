@@ -8,14 +8,17 @@ public class MapTest {
 
     @Test
     public void setTile() {
+        //method isn't being used
     }
 
     @Test
     public void getTile() {
+        //method isn't being used
     }
 
     @Test
     public void draw() {
+
     }
 
     @Test

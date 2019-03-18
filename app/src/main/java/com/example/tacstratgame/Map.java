@@ -64,11 +64,11 @@ public class Map {
     }
     public void setTile(int x, int  y,Tile tile){
         map[x][y] = tile;
-    }
+    }   //not currently being used
     public Tile getTile(int x, int y){
         return map[x][y];
-    }
-    public float[] getGridArray(){return grid;}
+    }              //not currently being used
+    public float[] getGridArray(){return grid;}                          //not currently being used
 
     public void draw(Canvas canvas) {
         canvas.drawLines(grid, gridPaint);
