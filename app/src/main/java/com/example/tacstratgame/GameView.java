@@ -24,9 +24,9 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
         setFocusable(true);
-        float x0 = screenWidth - (screenWidth / 3);
+        float x0 = screenWidth / 3;
         float y0 = screenHeight - (screenHeight / 4);
-        commandMenu = new CommandMenu(x0, y0, screenWidth, screenHeight);
+        commandMenu = new CommandMenu(x0, y0, 0, screenHeight);
 
     }
     @Override

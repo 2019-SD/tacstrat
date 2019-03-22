@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import static android.graphics.Color.BLACK;
 import static android.graphics.Color.DKGRAY;
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.LTGRAY;
@@ -27,12 +28,12 @@ public class CommandMenu {
         this.menuY0 = menuY0;
         this.menuX1 = menuX1;
         this.menuY1 = menuY1;
-        dX = menuX1 - menuX0;
+        dX = menuX0 - menuX1;
         dY = menuY1 - menuY0;
         drawValue = false;
         menuPaint = new Paint();
         menuPaint.setColor(DKGRAY);
-        menuPaint.setStrokeWidth(4);
+        menuPaint.setStrokeWidth(10);
         menuPaint.setAntiAlias(true);
     }
 
@@ -59,23 +60,30 @@ public class CommandMenu {
         canvas.drawRect(menuX0, menuY0, menuX1, menuY1, menuPaint);
         menuPaint.setStrokeWidth(0);
         menuPaint.setColor(LTGRAY);
-        canvas.drawRect(menuX0 + 4, menuY0 + 4, menuX1 - 4, menuY1 - 4, menuPaint);
-        menuPaint.setStrokeWidth(2);
+        canvas.drawRect(menuX0 - 10, menuY0 + 10, menuX1 + 10, menuY1 - 10, menuPaint);
+        menuPaint.setStrokeWidth(5);
         menuPaint.setColor(DKGRAY);
         float intervalY = dY / 4;
-        float intervalX = dX / 4;
-        canvas.drawLine(menuX0, menuY0 + intervalY, menuX1, menuY1 + intervalY, menuPaint);
-        canvas.drawLine(menuX0, menuY0 + 2 * intervalY, menuX1, menuY1 + 2 * intervalY, menuPaint);
-        canvas.drawLine(menuX0, menuY0 + 3 * intervalY, menuX1, menuY0 + 3 * intervalY, menuPaint);
-        menuPaint.setStrokeWidth(1);
+        float intervalX = dX / 3;
+        canvas.drawLine(menuX0 - intervalX, menuY0, menuX1 + intervalX, menuY1, menuPaint);
+        canvas.drawLine(menuX0 - (2 * intervalX), menuY0, menuX1 + (2 * intervalX), menuY1, menuPaint);
+        menuPaint.setStrokeWidth(4);
         menuPaint.setStyle(Paint.Style.FILL);
-        menuPaint.setColor(RED);
-        menuPaint.setTextSize(16);
-        intervalY = intervalY / 4;
-        intervalX = intervalX / 4;
-        canvas.drawText("Attack", menuX0 + intervalX, menuY0 + intervalY, menuPaint);
-        canvas.drawText("Defend", menuX0 + intervalX, menuY0 + 5 * intervalY, menuPaint);
-        canvas.drawText("Move", menuX0 + intervalX, menuY0 + 9 * intervalY, menuPaint);
-        canvas.drawText("Special", menuX0 + intervalX, menuY0 + 13 * intervalY, menuPaint);
+        menuPaint.setColor(BLACK);
+        menuPaint.setTextSize(34);
+        intervalY = intervalY / 2;
+        intervalX = intervalX / 2;
+        canvas.save();
+        canvas.rotate(90f, menuX0 - intervalX, menuY0 + intervalY);
+        canvas.drawText("Attack", menuX0 - intervalX, menuY0 + intervalY, menuPaint);
+        canvas.restore();
+        canvas.save();
+        canvas.rotate(90f, menuX0 - (5 * intervalX), menuY0 + intervalY);
+        canvas.drawText("Defend", menuX0 - (5 * intervalX), menuY0 + intervalY, menuPaint);
+        canvas.restore();
+        canvas.save();
+        canvas.rotate(90f, menuX0 - (9 * intervalX), menuY0 + intervalY);
+        canvas.drawText("Move", menuX0 - (9 * intervalX), menuY0 + intervalY, menuPaint);
+        canvas.restore();
     }
 }

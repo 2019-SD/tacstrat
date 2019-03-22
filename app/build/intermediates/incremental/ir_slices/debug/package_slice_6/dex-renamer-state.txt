@@ -1,0 +1,4 @@
+#Fri Mar 22 12:09:11 EDT 2019
+base.0=/home/jacob/Documents/College/Spring 2019/CS3141/tacstrat/app/build/intermediates/transforms/dexMerger/debug/6
+path.0=classes.dex
+renamed.0=classes.dex
