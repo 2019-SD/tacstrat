@@ -9,6 +9,7 @@ public class Marksman implements Unit {
     private int range = 3;
     private int x;
     private int y;
+    private int image = R.drawable.lightning_circle;
 
     public Marksman(int x, int y){
         this.x = x;
@@ -32,6 +33,7 @@ public class Marksman implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
+    public int getImage(){ return image; }
 
     public void setAttack(int attack){
         this.attack = attack;

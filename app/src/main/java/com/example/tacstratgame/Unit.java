@@ -8,6 +8,7 @@ public interface Unit {
     int getRange();
     int getX();
     int getY();
+    int getImage();
 
     void setAttack(int attack);
     void setDefense(int defense);

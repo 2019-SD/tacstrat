@@ -1,8 +1,11 @@
 package com.example.tacstratgame;
 
-import org.junit.Test;
+import android.content.res.Resources;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+//import org.mockito.Mock;
+
+
 
 public class MapTest {
 
@@ -17,15 +20,18 @@ public class MapTest {
     }
 
     @Test
-    public void draw() {
-
+    public void drawTest() {
+        //method won't be tested here
     }
 
     @Test
     public void update() {
     }
 
+//    private Resources resTest = null;
+
     @Test
     public void loadMap() {
+        //mockito is having issues so hold for now
     }
 }

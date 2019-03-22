@@ -20,14 +20,14 @@
         android:contentDescription="@string/menu_description"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/rock"
+        android:src="@drawable/sky_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/rock"
+        app:srcCompat="@drawable/sky_background"
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_height="44dp"
         android:text="@string/start_but"
         tools:layout_editor_absoluteX="321dp"
-        tools:layout_editor_absoluteY="242dp" />
+        tools:layout_editor_absoluteY="244dp" />
 
     <Button
         android:id="@+id/button2"
@@ -58,12 +58,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="172dp"
         android:layout_marginEnd="109dp"
         android:fontFamily="@font/allerta_stencil"
         android:text="@string/app_name"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 

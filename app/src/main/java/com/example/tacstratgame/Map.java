@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
+import java.util.ArrayList;
+
 import static android.graphics.Color.WHITE;
 
 public class Map {
@@ -21,11 +23,13 @@ public class Map {
     private int height;
     private float[] grid;
     private Paint gridPaint;
-    int drawMove;
+    private int drawMove;
     private boolean[][] visited;
+    private ArrayList<Unit> unitList;
 
     public Map(int mapNum, Resources res) {
         drawMove = 0;
+        unitList = new ArrayList<Unit>();
         resources = res;
         loadMap(mapNum);
         grid = new float[(width+1)*4+(height+1)*4];
@@ -62,13 +66,21 @@ public class Map {
         gridPaint = new Paint();
         gridPaint.setColor(WHITE);
     }
+
+    //not currently being used
     public void setTile(int x, int  y,Tile tile){
         map[x][y] = tile;
-    }   //not currently being used
+    }
+
+    //not currently being used
     public Tile getTile(int x, int y){
         return map[x][y];
-    }              //not currently being used
-    public float[] getGridArray(){return grid;}                          //not currently being used
+    }
+
+    //not currently being used
+    public float[] getGridArray(){return grid;}
+
+    public ArrayList<Unit> getUnitArray(){return unitList;}
 
     public void draw(Canvas canvas) {
         canvas.drawLines(grid, gridPaint);
@@ -96,8 +108,15 @@ public class Map {
                 }
             }
         }
+        for (Unit u: unitList){
+            Bitmap image = BitmapFactory.decodeResource(resources, u.getImage());
+            image = Bitmap.createScaledBitmap(image, interval-1, interval-1, false);
+            canvas.drawBitmap(image, 1 + (unusedPix / 2) + (interval * u.getX()), 1 + startheight + (interval * u.getY()), null);
+        }
     }
+
     public void update() {
+        //useless?
     }
 
     /**
@@ -137,12 +156,12 @@ public class Map {
         map = new Tile[width][height];
         int column = 0;
         int row = 0;
-        String tile;
+        String item;
         while (index < level.length()){
-            tile = level.getString(index);
+            item = level.getString(index);
 
             // Each letter represents a different type of tile
-            switch(tile){
+            switch(item){
                 case "s":
                     map[row][column] = new Tile(R.drawable.sand_tile, 2, 2);
                     break;
@@ -155,8 +174,20 @@ public class Map {
                 case "w":
                     map[row][column] = new Tile(R.drawable.water_tile, 3, 0);
                     break;
+                case "cav":
+                    if (column == 0){
+                        column = height-1;
+                        row--;
+                    }else{
+                        column--;
+                    }
+                    Cavalry cav = new Cavalry(row,column); // This will be how enemy units will be set
+                    unitList.add(cav);
+                    break;
+
                 default:
                     map[row][column] = new Tile(R.drawable.lightning_circle,-1,-1);
+                    break;
             }
             index++;
             column++;
@@ -178,10 +209,10 @@ public class Map {
         int movement = unit.getMvmt();
         int x = unit.getX(); //The width location on the grid where the unit is
         int y = unit.getY(); //The height location on the grid where the unit is
-        movespread(x-1, y, movement);
-        movespread(x+1, y, movement);
-        movespread(x, y-1, movement);
-        movespread(x, y+1, movement);
+        moveSpread(x-1, y, movement);
+        moveSpread(x+1, y, movement);
+        moveSpread(x, y-1, movement);
+        moveSpread(x, y+1, movement);
         visited[x][y] = false; //The square the unit is on should not be able to be moved to
         drawMove = 1; // The visited range is ready to draw
     }
@@ -193,7 +224,7 @@ public class Map {
      * @param y the current height value being tested
      * @param movement the remaining movement range
      */
-    private void movespread(int x, int y, int movement) {
+    private void moveSpread(int x, int y, int movement) {
         if (x < 0 || y < 0 || x >= width || y >= height ){
             return;
         }
@@ -203,10 +234,10 @@ public class Map {
         }else{
             movement = movement - tile.getMovementReduction();
             visited[x][y] = true;
-            movespread(x-1, y, movement);
-            movespread(x+1, y, movement);
-            movespread(x, y-1, movement);
-            movespread(x, y+1, movement);
+            moveSpread(x-1, y, movement);
+            moveSpread(x+1, y, movement);
+            moveSpread(x, y-1, movement);
+            moveSpread(x, y+1, movement);
         }
     }
 }

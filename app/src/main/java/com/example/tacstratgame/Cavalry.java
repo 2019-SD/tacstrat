@@ -9,6 +9,7 @@ public class Cavalry implements Unit {
     private int range = 1;
     private int x;
     private int y;
+    private int image = R.drawable.cowboy;
 
     public Cavalry(int x, int y){
         this.x = x;
@@ -32,6 +33,7 @@ public class Cavalry implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
+    public int getImage(){ return image; }
 
     public void setAttack(int attack){
         this.attack = attack;

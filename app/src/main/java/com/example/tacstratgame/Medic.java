@@ -11,6 +11,7 @@ public class Medic implements Unit {
     private int range = 1;
     private int x;
     private int y;
+    private int image = R.drawable.lightning_circle;
 
     public Medic(int x, int y){
         this.x = x;
@@ -38,6 +39,7 @@ public class Medic implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
+    public int getImage(){ return image; }
 
     // Setters
     public void setHeal(int heal) {
