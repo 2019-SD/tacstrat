@@ -20,6 +20,8 @@ public class CommandMenu {
     private float menuY1;
     private float dX;
     private float dY;
+    float intervalY;
+    float intervalX;
     private boolean drawValue;
     private Paint menuPaint;
 
@@ -30,6 +32,8 @@ public class CommandMenu {
         this.menuY1 = menuY1;
         dX = menuX0 - menuX1;
         dY = menuY1 - menuY0;
+        intervalY = dY / 4;
+        intervalX = dX / 3;
         drawValue = false;
         menuPaint = new Paint();
         menuPaint.setColor(DKGRAY);
@@ -63,10 +67,8 @@ public class CommandMenu {
         canvas.drawRect(menuX0 - 10, menuY0 + 10, menuX1 + 10, menuY1 - 10, menuPaint);
         menuPaint.setStrokeWidth(5);
         menuPaint.setColor(DKGRAY);
-        float intervalY = dY / 4;
-        float intervalX = dX / 3;
-        canvas.drawLine(menuX0 - intervalX, menuY0, menuX1 + intervalX, menuY1, menuPaint);
-        canvas.drawLine(menuX0 - (2 * intervalX), menuY0, menuX1 + (2 * intervalX), menuY1, menuPaint);
+        canvas.drawLine(menuX0 - intervalX, menuY0, menuX1 + (2 * intervalX), menuY1, menuPaint);
+        canvas.drawLine(menuX0 - (2 * intervalX), menuY0, menuX1 + intervalX, menuY1, menuPaint);
         menuPaint.setStrokeWidth(4);
         menuPaint.setStyle(Paint.Style.FILL);
         menuPaint.setColor(BLACK);
