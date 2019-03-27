@@ -636,6 +636,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable alien
 drawable building_tile
 drawable building_tile_2
 drawable cowboy
@@ -656,6 +657,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable robot
 drawable sand_tile
 drawable sky_background
 drawable standard_tile

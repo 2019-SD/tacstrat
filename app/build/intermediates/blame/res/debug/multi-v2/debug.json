@@ -160,21 +160,6 @@
             ]
         },
         {
-            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-v24_values-v24.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-et_values-et.arsc.flat",
             "map": [
                 {
@@ -202,6 +187,21 @@
                         "startOffsets": "2942",
                         "endColumns": "100",
                         "endOffsets": "3038"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-v24_values-v24.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
                     }
                 }
             ]
@@ -463,38 +463,6 @@
             ]
         },
         {
-            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-af_values-af.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\b74f7663a69ecd948a935b5c3eddc6c7\\res\\values-af\\values-af.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2856",
-                        "endColumns": "100",
-                        "endOffsets": "2952"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-af\\values-af.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,209,309,415,500,603,721,797,874,965,1058,1154,1248,1348,1441,1536,1635,1730,1824,1905,2012,2115,2212,2320,2422,2524,2678,2776",
-                        "endColumns": "103,99,105,84,102,117,75,76,90,92,95,93,99,92,94,98,94,93,80,106,102,96,107,101,101,153,97,79",
-                        "endOffsets": "204,304,410,495,598,716,792,869,960,1053,1149,1243,1343,1436,1531,1630,1725,1819,1900,2007,2110,2207,2315,2417,2519,2673,2771,2851"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-ar_values-ar.arsc.flat",
             "map": [
                 {
@@ -522,6 +490,38 @@
                         "startOffsets": "105,222,326,435,517,618,732,811,890,981,1074,1170,1264,1365,1458,1553,1647,1738,1832,1911,2016,2117,2213,2321,2424,2527,2682,2779",
                         "endColumns": "116,103,108,81,100,113,78,78,90,92,95,93,100,92,94,93,90,93,78,104,100,95,107,102,102,154,96,80",
                         "endOffsets": "217,321,430,512,613,727,806,885,976,1069,1165,1259,1360,1453,1548,1642,1733,1827,1906,2011,2112,2208,2316,2419,2522,2677,2774,2855"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-af_values-af.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\b74f7663a69ecd948a935b5c3eddc6c7\\res\\values-af\\values-af.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2856",
+                        "endColumns": "100",
+                        "endOffsets": "2952"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-af\\values-af.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,309,415,500,603,721,797,874,965,1058,1154,1248,1348,1441,1536,1635,1730,1824,1905,2012,2115,2212,2320,2422,2524,2678,2776",
+                        "endColumns": "103,99,105,84,102,117,75,76,90,92,95,93,99,92,94,98,94,93,80,106,102,96,107,101,101,153,97,79",
+                        "endOffsets": "204,304,410,495,598,716,792,869,960,1053,1149,1243,1343,1436,1531,1630,1725,1819,1900,2007,2110,2207,2315,2417,2519,2673,2771,2851"
                     }
                 }
             ]
@@ -841,38 +841,6 @@
             ]
         },
         {
-            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-de_values-de.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\b74f7663a69ecd948a935b5c3eddc6c7\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "30",
-                        "startColumns": "4",
-                        "startOffsets": "2925",
-                        "endColumns": "100",
-                        "endOffsets": "3021"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "105,210,308,420,506,611,726,803,879,971,1065,1162,1263,1371,1471,1575,1675,1773,1870,1952,2063,2166,2265,2376,2478,2585,2741,2843",
-                        "endColumns": "104,97,111,85,104,114,76,75,91,93,96,100,107,99,103,99,97,96,81,110,102,98,110,101,106,155,101,81",
-                        "endOffsets": "205,303,415,501,606,721,798,874,966,1060,1157,1258,1366,1466,1570,1670,1768,1865,1947,2058,2161,2260,2371,2473,2580,2736,2838,2920"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-fa_values-fa.arsc.flat",
             "map": [
                 {
@@ -900,6 +868,38 @@
                         "startOffsets": "105,215,318,429,513,616,731,810,888,981,1076,1172,1266,1369,1464,1561,1660,1753,1843,1924,2036,2139,2237,2347,2451,2560,2721,2822",
                         "endColumns": "109,102,110,83,102,114,78,77,92,94,95,93,102,94,96,98,92,89,80,111,102,97,109,103,108,160,100,80",
                         "endOffsets": "210,313,424,508,611,726,805,883,976,1071,1167,1261,1364,1459,1556,1655,1748,1838,1919,2031,2134,2232,2342,2446,2555,2716,2817,2898"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\androidBook\\tacstrat\\app\\build\\intermediates\\res\\merged\\debug\\values-de_values-de.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-28.0.0.aar\\b74f7663a69ecd948a935b5c3eddc6c7\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "2925",
+                        "endColumns": "100",
+                        "endOffsets": "3021"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ivirb\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\d2cb13808812c5bfe8735642163a980e\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,210,308,420,506,611,726,803,879,971,1065,1162,1263,1371,1471,1575,1675,1773,1870,1952,2063,2166,2265,2376,2478,2585,2741,2843",
+                        "endColumns": "104,97,111,85,104,114,76,75,91,93,96,100,107,99,103,99,97,96,81,110,102,98,110,101,106,155,101,81",
+                        "endOffsets": "205,303,415,501,606,721,798,874,966,1060,1157,1258,1366,1466,1570,1670,1768,1865,1947,2058,2161,2260,2371,2473,2580,2736,2838,2920"
                     }
                 }
             ]

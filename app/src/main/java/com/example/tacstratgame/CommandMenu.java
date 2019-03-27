@@ -20,8 +20,10 @@ public class CommandMenu {
     private float menuY1;
     private float dX;
     private float dY;
-    float intervalY;
-    float intervalX;
+    float lineSpaceX;
+    float lineSpaceY;
+    float textSpaceX;
+    float textSpaceY;
     private boolean drawValue;
     private Paint menuPaint;
 
@@ -32,8 +34,10 @@ public class CommandMenu {
         this.menuY1 = menuY1;
         dX = menuX0 - menuX1;
         dY = menuY1 - menuY0;
-        intervalY = dY / 4;
-        intervalX = dX / 3;
+        lineSpaceX = dX / 3;
+        lineSpaceY = dY / 4;
+        textSpaceX = lineSpaceX / 2;
+        textSpaceY = lineSpaceY / 2;
         drawValue = false;
         menuPaint = new Paint();
         menuPaint.setColor(DKGRAY);
@@ -67,25 +71,23 @@ public class CommandMenu {
         canvas.drawRect(menuX0 - 10, menuY0 + 10, menuX1 + 10, menuY1 - 10, menuPaint);
         menuPaint.setStrokeWidth(5);
         menuPaint.setColor(DKGRAY);
-        canvas.drawLine(menuX0 - intervalX, menuY0, menuX1 + (2 * intervalX), menuY1, menuPaint);
-        canvas.drawLine(menuX0 - (2 * intervalX), menuY0, menuX1 + intervalX, menuY1, menuPaint);
+        canvas.drawLine(menuX0 - lineSpaceX, menuY0, menuX1 + (2 * lineSpaceX), menuY1, menuPaint);
+        canvas.drawLine(menuX0 - (2 * lineSpaceX), menuY0, menuX1 + lineSpaceX, menuY1, menuPaint);
         menuPaint.setStrokeWidth(4);
         menuPaint.setStyle(Paint.Style.FILL);
         menuPaint.setColor(BLACK);
         menuPaint.setTextSize(34);
-        intervalY = intervalY / 2;
-        intervalX = intervalX / 2;
         canvas.save();
-        canvas.rotate(90f, menuX0 - intervalX, menuY0 + intervalY);
-        canvas.drawText("Attack", menuX0 - intervalX, menuY0 + intervalY, menuPaint);
+        canvas.rotate(90f, menuX0 - textSpaceX, menuY0 + textSpaceY);
+        canvas.drawText("Attack", menuX0 - textSpaceX, menuY0 + textSpaceY, menuPaint);
         canvas.restore();
         canvas.save();
-        canvas.rotate(90f, menuX0 - (5 * intervalX), menuY0 + intervalY);
-        canvas.drawText("Defend", menuX0 - (5 * intervalX), menuY0 + intervalY, menuPaint);
+        canvas.rotate(90f, menuX0 - (5 * textSpaceX), menuY0 + textSpaceY);
+        canvas.drawText("Defend", menuX0 - (5 * textSpaceX), menuY0 + textSpaceY, menuPaint);
         canvas.restore();
         canvas.save();
-        canvas.rotate(90f, menuX0 - (9 * intervalX), menuY0 + intervalY);
-        canvas.drawText("Move", menuX0 - (9 * intervalX), menuY0 + intervalY, menuPaint);
+        canvas.rotate(90f, menuX0 - (9 * textSpaceX), menuY0 + textSpaceY);
+        canvas.drawText("Move", menuX0 - (9 * textSpaceX), menuY0 + textSpaceY, menuPaint);
         canvas.restore();
     }
 }
