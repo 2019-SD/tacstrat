@@ -7,10 +7,10 @@ package com.example.tacstratgame;
  * Class will be tested with a local test. (Junit)
  */
 public class Tile {
-    private int picture; //The integer pointing to the image in drawable
+    private int picture; // The integer pointing to the image in drawable
     private int movementReduction; // The amount that traveling over this tile will reduce available movement
     private int effect; // Possible special effect of this tile
-
+    private Unit unit = null; // Unit on this tile, null if no unit
 
     public Tile(int picture, int movementReduction, int effect){
         this.picture = picture;
@@ -29,4 +29,12 @@ public class Tile {
     public int getEffect() {
         return effect;
     }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit u) { unit = u; }
+
+    public boolean hasUnit() { return unit !=null; }
 }

@@ -23,12 +23,13 @@ public class Map {
     private int height;
     private float[] grid;
     private Paint gridPaint;
-    private int drawMove;
+    private boolean drawMove;
     private boolean[][] visited;
     private ArrayList<Unit> unitList;
+    private Unit movingUnit;
 
     public Map(int mapNum, Resources res) {
-        drawMove = 0;
+        drawMove = false;
         unitList = new ArrayList<Unit>();
         resources = res;
         loadMap(mapNum);
@@ -72,9 +73,36 @@ public class Map {
         map[x][y] = tile;
     }
 
-    //not currently being used
-    public Tile getTile(int x, int y){
-        return map[x][y];
+    /**
+     * Method to return the tile at the given float coordinates
+     * @param x x float coordinate
+     * @param y y float coordinate
+     * @return tile at given coordinates
+     */
+    public Tile getTile(float x, float y){
+        int xpos = getX(x);
+        int ypos =getY(y);
+        if (x < (unusedPix/2) || x > screenWidth-(unusedPix/2)-(unusedPix%2) || y < startheight || y > startheight + height*interval){
+            return null;
+        }
+        return map[xpos][ypos];
+    }
+
+    /**
+     * Returns the integer of the width position in map array
+     * @param x x float coordinate
+     * @return integer of tile in map array
+     */
+    public int getX(float x){
+        return (int) (((x-unusedPix/2)-2)/interval);
+    }
+    /**
+     * Returns the integer of the height position in map array
+     * @param y y float coordinate
+     * @return integer of tile in map array
+     */
+    public int getY(float y){
+        return (int) ((y-startheight)/interval);
     }
 
     //not currently being used
@@ -84,7 +112,7 @@ public class Map {
 
     public void draw(Canvas canvas) {
         canvas.drawLines(grid, gridPaint);
-        if (drawMove == 0) { // Simply draws the map
+        if (!drawMove) { // If false, simply draws the map
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
                     Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
@@ -182,6 +210,7 @@ public class Map {
                         column--;
                     }
                     Cavalry cav = new Cavalry(row,column); // This will be how enemy units will be set
+                    map[row][column].setUnit(cav);
                     unitList.add(cav);
                     break;
 
@@ -204,7 +233,8 @@ public class Map {
      * @param unit The unit to move
      */
     public void move(Unit unit){
-        drawMove = 0; // Ensure this doesn't get drawn until its done
+        movingUnit = unit;
+        drawMove = false; // Ensure this doesn't get drawn until its done
         visited = new boolean[width][height];
         int movement = unit.getMvmt();
         int x = unit.getX(); //The width location on the grid where the unit is
@@ -214,7 +244,7 @@ public class Map {
         moveSpread(x, y-1, movement);
         moveSpread(x, y+1, movement);
         visited[x][y] = false; //The square the unit is on should not be able to be moved to
-        drawMove = 1; // The visited range is ready to draw
+        drawMove = true; // The visited range is ready to draw
     }
 
     /**
@@ -233,11 +263,44 @@ public class Map {
             return;
         }else{
             movement = movement - tile.getMovementReduction();
-            visited[x][y] = true;
+            if(!map[x][y].hasUnit()) {
+                visited[x][y] = true;
+            }
             moveSpread(x-1, y, movement);
             moveSpread(x+1, y, movement);
             moveSpread(x, y-1, movement);
             moveSpread(x, y+1, movement);
         }
     }
+
+    /**
+     * @return Boolean of if map is drawing movement range
+     */
+    public boolean drawingMove(){ return drawMove; }
+
+    /**
+     * Returns the boolean value that is if x and y are in the current moving units range
+     * @param x x position in map array
+     * @param y y position in map array
+     * @return Boolean of if x and y are in movement range
+     */
+    public boolean canMove(int x, int y){ return visited[x][y];}
+
+    /**
+     * Moves the unit who is currently displaying movement range and stops drawing movement
+     * @param x x position to move unit to
+     * @param y y position to move unit to
+     */
+    public void moveUnit(int x, int y){
+        map[movingUnit.getX()][movingUnit.getY()].setUnit(null);
+        map[x][y].setUnit(movingUnit);
+        drawMove = false;
+        movingUnit.setX(x);
+        movingUnit.setY(y);
+    }
+
+    /**
+     * Stops the map from drawing the movement range
+     */
+    public void stopDrawingMove(){drawMove = false;}
 }

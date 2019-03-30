@@ -6,7 +6,6 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.view.MotionEvent;
 import android.content.res.Resources;
-import java.util.ArrayList;
 
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
@@ -40,8 +39,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         map = new Map(3, getResources()); // Makes and loads a map number
-        ArrayList<Unit> unit = map.getUnitArray(); //Testing for movement
-        map.move(unit.get(3)); //Testing for movement
         thread.setRunning(true);
         thread.start();
     }
@@ -77,7 +74,26 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         switch(e.getAction()) {
             //When user first touches the screen.
             case MotionEvent.ACTION_DOWN:
-                commandMenu.toggleDraw();
+                commandMenu.setDrawValue(false);
+                Tile tile = map.getTile(x,y);
+                if (tile == null){
+                    map.stopDrawingMove();
+                }else{
+                    if(map.drawingMove()){
+                        if (map.canMove(map.getX(x),map.getY(y))){
+                            map.moveUnit(map.getX(x), map.getY(y));
+                            invalidate();
+                            return true;
+                        }else{
+                            map.stopDrawingMove();
+                        }
+                    }
+                    if(tile.hasUnit()){
+                        commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time
+                        map.move(tile.getUnit());
+                    }
+                }
+
                 invalidate();
 
         }
