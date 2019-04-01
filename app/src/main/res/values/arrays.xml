@@ -2,62 +2,200 @@
 <resources>
     <!--Map built with width in hex, height in hex, then the bottom row sequentially, then the row above, etc.-->
     <array name="map0">
-        <item>#8</item>
-        <item>#8</item>
+        <item>#B</item>
+        <item>#F</item>
 
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>s</item>
         <item>w</item>
         <item>w</item>
         <item>w</item>
-
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item>
-        <item>s</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
         <item>w</item>
         <item>w</item>
         <item>w</item>
 
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
         <item>f</item>
-        <item>s</item>
-        <item>s</item>
         <item>f</item>
         <item>f</item>
-        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
         <item>w</item>
         <item>w</item>
 
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item>
-        <item>f</item>
-        <item>s</item>
+
         <item>w</item>
-
+        <item>w</item>
         <item>f</item>
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item>
-        <item>f</item>
-        <item>b</item>
-        <item>b</item>
-
-        <item>f</item>
-        <item>f</item>
-        <item>s</item>
         <item>f</item>
         <item>f</item>
         <item>f</item>
         <item>b</item>
         <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+    </array>
+
+    <array name="level2">
+        <item>#B</item>
+        <item>#F</item>
 
         <item>f</item>
         <item>f</item>
@@ -65,11 +203,180 @@
         <item>f</item>
         <item>f</item>
         <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
         <item>f</item>
         <item>f</item>
 
+
+
+        <item>f</item><item>cav</item>
         <item>f</item>
         <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item> <item>cav</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
         <item>f</item>
         <item>f</item>
         <item>f</item>
@@ -77,6 +384,393 @@
         <item>f</item>
         <item>f</item>
     </array>
+
+    <array name="level3">
+        <item>#B</item>
+        <item>#F</item>
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item> <item>cav</item>
+
+
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+    </array>
+
+    <array name="level4">
+        <item>#B</item>
+        <item>#F</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>s</item>
+        <item>s</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+
+
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+
+
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+    </array>
+
 
     <array name="test10">
         <item>#A</item>
@@ -192,6 +886,8 @@
         <item>f</item>
         <item>f</item>
     </array>
+
+
     <array name="test11">
         <item>#B</item>
         <item>#B</item>
@@ -328,105 +1024,153 @@
         <item>f</item>
         <item>f</item>
     </array>
-    <array name="rect11x15">
+    <array name="level5">
         <item>#B</item>
         <item>#F</item>
 
         <item>f</item>
         <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item><item>cav</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
         <item>f</item>
         <item>f</item>
-        <item>s</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item> <item>cav</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item>
-        <item>s</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>f</item>
-        <item>f</item> <item>cav</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item> <item>cav</item>
-        <item>f</item>
-        <item>s</item>
-        <item>w</item>
-        <item>w</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>s</item>
-        <item>s</item>
-        <item>s</item>
-        <item>f</item>
-        <item>f</item>
-        <item>s</item>
-        <item>w</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
 
         <item>f</item>
         <item>f</item>
-        <item>s</item>
-        <item>s</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
         <item>f</item>
         <item>f</item>
         <item>b</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
         <item>b</item>
         <item>f</item>
         <item>f</item>
         <item>f</item>
         <item>w</item>
+        <item>b</item>
         <item>w</item>
-        <item>w</item>
-        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
 
-        <item>f</item>
-        <item>f</item>
         <item>s</item>
+        <item>s</item>
+        <item>b</item>
         <item>f</item>
         <item>f</item>
         <item>f</item>
         <item>b</item>
         <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>s</item>
+        <item>s</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
         <item>f</item>
         <item>f</item>
         <item>f</item>
         <item>w</item>
+        <item>b</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+
+        <item>f</item>
+        <item>f</item>
         <item>w</item>
         <item>w</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
         <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
 
         <item>f</item>
         <item>f</item>
@@ -439,73 +1183,25 @@
         <item>f</item>
         <item>f</item>
         <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
 
         <item>f</item>
         <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item><item>cav</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
+        <item>f</item>
+        <item>f</item><item>cav</item>
         <item>f</item>
         <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item> <item>cav</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>f</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
-        <item>w</item>
     </array>
 </resources>
