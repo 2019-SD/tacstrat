@@ -200,7 +200,7 @@ public class Map {
                     map[row][column] = new Tile(R.drawable.sand_tile, 2, 2);
                     break;
                 case "b":
-                    map[row][column] = new Tile(R.drawable.building_tile, -1, 1);
+                    map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1);
                     break;
                 case "f":
                     map[row][column] = new Tile(R.drawable.standard_tile, 1, 0);

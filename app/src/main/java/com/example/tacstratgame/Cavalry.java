@@ -9,7 +9,7 @@ public class Cavalry implements Unit {
     private int range = 1;
     private int x;
     private int y;
-    private int image = R.drawable.cowboy;
+    private int image = R.drawable.cat;
 
     public Cavalry(int x, int y){
         this.x = x;

@@ -5,11 +5,11 @@ public class Artillery implements Unit {
     private int attack = 150;
     private int defense = 70;
     private int hp = 300;
-    private int mvmt = 0;
+    private int mvmt = 1;
     private int range = 3;
     private int x;
     private int y;
-    private int image = R.drawable.lightning_circle;
+    private int image = R.drawable.robot;
 
     public Artillery(int x, int y){
         this.x = x;
