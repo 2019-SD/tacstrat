@@ -161,13 +161,19 @@ public class Map {
                 level = resources.obtainTypedArray(R.array.map0);
                 break;
             case 1:
-                level = resources.obtainTypedArray(R.array.test10);
+                level = resources.obtainTypedArray(R.array.map0);
                 break;
             case 2:
-                level = resources.obtainTypedArray(R.array.test11);
+                level = resources.obtainTypedArray(R.array.level2);
                 break;
             case 3:
-                level = resources.obtainTypedArray(R.array.rect11x15);
+                level = resources.obtainTypedArray(R.array.level3);
+                break;
+            case 4:
+                level = resources.obtainTypedArray(R.array.level4);
+                break;
+            case 5:
+                level = resources.obtainTypedArray(R.array.level5);
                 break;
             default:
                 return -1;
