@@ -10,7 +10,7 @@ public class Marksman implements Unit {
     private int range = 3;
     private int x;
     private int y;
-    private int image = R.drawable.lightning_circle;
+    private int image = R.drawable.cowboy;
 
     public Marksman(int x, int y){
         this.x = x;
