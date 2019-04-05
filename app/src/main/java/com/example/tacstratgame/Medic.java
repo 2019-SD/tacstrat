@@ -7,6 +7,7 @@ public class Medic implements Unit {
     private int heal = 50;
     private int defense = 20;
     private int hp = 150;
+    private int hpMax = 150;
     private int mvmt = 2;
     private int range = 1;
     private int x;
@@ -31,6 +32,7 @@ public class Medic implements Unit {
     public int getHp() {
         return hp;
     }
+    public int getHpMax() { return hpMax; }
     public int getMvmt(){
         return mvmt;
     }
@@ -55,6 +57,7 @@ public class Medic implements Unit {
     public void setHp(int hp){
         this.hp = hp;
     }
+    public void setHpMax(int hpMax) { this.hpMax = hpMax; }
     public void setMvmt(int mvmt){
         this.mvmt = mvmt;
     }

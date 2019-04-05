@@ -4,6 +4,7 @@ public interface Unit {
     int getAttack();
     int getDefense();
     int getHp();
+    int getHpMax();
     int getMvmt();
     int getRange();
     int getX();
@@ -13,6 +14,7 @@ public interface Unit {
     void setAttack(int attack);
     void setDefense(int defense);
     void setHp(int hp);
+    void setHpMax(int hpMax);
     void setMvmt(int mvmt);
     void setRange(int range);
     void setX(int x);

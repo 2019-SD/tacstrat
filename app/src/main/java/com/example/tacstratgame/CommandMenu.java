@@ -56,6 +56,7 @@ public class CommandMenu {
     public void setMenuX1(float x) { menuX1 = x; }
     public void setMenuY1(float y) { menuY1 = y;}
     public void setDrawValue(boolean value)  { drawValue = value; }
+
     public void toggleDraw() {
         if (drawValue) {
             drawValue = false;

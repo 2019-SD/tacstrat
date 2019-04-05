@@ -8,18 +8,27 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 public class MainThread extends Thread {
-    private SurfaceHolder surfaceHolder;
+
+    private Game game;
     private GameView gameView;
+    private SurfaceHolder surfaceHolder;
+    private MenuSet menuSet;
     private boolean running;
     public static Canvas canvas;
 
-    public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
-
+    public MainThread(Game game, GameView gameView, MenuSet menuSet) {
         super();
-        this.surfaceHolder = surfaceHolder;
-        this.gameView = gameView;
 
+        this.game = game;
+        this.gameView = gameView;
+        this.surfaceHolder = gameView.getHolder();
+        this.menuSet = menuSet;
+
+        //Menus need to be setup by this point.
+        game.addView(gameView);
+        game.addView(menuSet);
     }
+
     @Override
     public void run() {
         while (running) {
@@ -42,6 +51,7 @@ public class MainThread extends Thread {
             }
         }
     }
+
     public void setRunning(boolean isRunning) {
         running = isRunning;
     }

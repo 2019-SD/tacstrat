@@ -6,6 +6,7 @@ import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.view.MotionEvent;
 import android.content.res.Resources;
+import android.view.View;
 
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
@@ -13,15 +14,21 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private float screenWidth = (float) Resources.getSystem().getDisplayMetrics().widthPixels;
     private float screenHeight = (float) Resources.getSystem().getDisplayMetrics().heightPixels;
 
-    private MainThread thread;
+    private MainThread mainThread;
     private Map map;
     private CommandMenu commandMenu;
+    private Game game;
+    private MenuSet menuSet;
 
-    public GameView(Context context) {
+    public GameView(Context context, Game game, MenuSet menuSet) {
         super(context);
 
         getHolder().addCallback(this);
-        thread = new MainThread(getHolder(), this);
+        this.game = game;
+        this.menuSet = menuSet;
+        map = new Map(3, getResources());
+        this.menuSet.setMap(map);
+        mainThread = new MainThread(game, this, menuSet);
         setFocusable(true);
         float x0 = screenWidth / 3;
         float y0 = screenHeight - (screenHeight / 4);
@@ -32,15 +39,15 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
     }
+
     public void update() {
         map.update();
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        map = new Map(3, getResources()); // Makes and loads a map number
-        thread.setRunning(true);
-        thread.start();
+        mainThread.setRunning(true);
+        mainThread.start();
     }
 
     @Override
@@ -48,8 +55,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         boolean retry = true;
         while (retry) {
             try {
-                thread.setRunning(false);
-                thread.join();
+                mainThread.setRunning(false);
+                mainThread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -74,41 +81,51 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         switch(e.getAction()) {
             //When user first touches the screen.
             case MotionEvent.ACTION_DOWN:
-                commandMenu.setDrawValue(false);
+                //commandMenu.setDrawValue(false);
+                menuSet.setActionDrawValue(false);
+                menuSet.setEnemyDrawValue(false);
+                menuSet.setPlayerDrawValue(false);
+
                 Tile tile = map.getTile(x,y);
+                menuSet.setTile(tile);
                 if (tile == null){
                     map.stopDrawingMove();
-                }else{
+                } else {
+                    menuSet.updateTileInfo(tile);
+                    menuSet.updatePlayerDisplay(tile.getUnit());
                     if(map.drawingMove()){
                         if (map.canMove(map.getX(x),map.getY(y))){
                             map.moveUnit(map.getX(x), map.getY(y));
-                            invalidate();
+                            menuSet.setTileDrawValue(false);
+                            menuSet.updateVisibility();
+                            game.invalidate();
                             return true;
-                        }else{
+                        } else{
                             map.stopDrawingMove();
                         }
                     }
-                    if(tile.hasUnit()){
-                        commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time
-                        map.move(tile.getUnit());
+                    else if(tile.hasUnit()){
+                        //commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time
+                        menuSet.setActionDrawValue(true);
+                        menuSet.setPlayerDrawValue(true);
                     }
                 }
 
-                invalidate();
+                menuSet.updateVisibility();
+                game.invalidate();
 
         }
 
         return true;
     }
 
-
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
         map.draw(canvas);
-        if(commandMenu.getDrawValue()){
-            commandMenu.draw(canvas);
-        }
+        //if(commandMenu.getDrawValue()){
+           // commandMenu.draw(canvas);
+       // }
 
     }
 

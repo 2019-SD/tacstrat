@@ -5,6 +5,7 @@ public class Infantry implements Unit {
     private int attack = 100;
     private int defense = 50;
     private int hp = 300;
+    private int hpMax = 300;
     private int mvmt = 3;
     private int range = 1;
     private int x;
@@ -25,6 +26,7 @@ public class Infantry implements Unit {
     public int getHp() {
         return hp;
     }
+    public int getHpMax() { return hpMax; }
     public int getMvmt(){
         return mvmt;
     }
@@ -44,6 +46,7 @@ public class Infantry implements Unit {
     public void setHp(int hp){
         this.hp = hp;
     }
+    public void setHpMax(int hpMax) { this.hpMax = hpMax; }
     public void setMvmt(int mvmt){
         this.mvmt = mvmt;
     }
