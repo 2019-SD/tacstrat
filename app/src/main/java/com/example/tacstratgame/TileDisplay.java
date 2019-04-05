@@ -1,7 +1,6 @@
 package com.example.tacstratgame;
 
 import android.content.Context;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class TileDisplay extends TextView {
@@ -42,6 +41,9 @@ public class TileDisplay extends TextView {
                 description = "Sand";
                 break;
             case R.drawable.building_tile:
+                description = "Buildings";
+                break;
+            case R.drawable.building_tile_2:
                 description = "Buildings";
                 break;
             case R.drawable.standard_tile:

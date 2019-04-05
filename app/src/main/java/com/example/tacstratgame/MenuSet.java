@@ -37,7 +37,7 @@ public class MenuSet extends FrameLayout {
         playerUnitDisplay = new PlayerUnitDisplay(context);
 
         tileDisplay.setBackgroundColor(TRANSPARENT | LTGRAY);
-        tileDisplay.setTextSize(12);
+        tileDisplay.setTextSize(10);
         tileDisplay.setRotation(90);
         tileDisplay.setPadding(15, 15, 15, 15);
         playerUnitDisplay.setBackgroundColor(TRANSPARENT | LTGRAY);
