@@ -157,11 +157,8 @@ public class Map {
 
         //Case statement can be expanded to include more levels as made
         switch (mapNum){
-            case 0:
-                level = resources.obtainTypedArray(R.array.map0);
-                break;
             case 1:
-                level = resources.obtainTypedArray(R.array.map0);
+                level = resources.obtainTypedArray(R.array.level1);
                 break;
             case 2:
                 level = resources.obtainTypedArray(R.array.level2);
