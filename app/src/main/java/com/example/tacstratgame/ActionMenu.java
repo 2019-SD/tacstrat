@@ -74,6 +74,17 @@ public class ActionMenu extends ScrollView {
             }
         });
 
+        attack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawValue = false;
+                map.attack(tile.getUnit());
+                menuSet.setTileDrawValue(false);
+                menuSet.setPlayerDrawValue(false);
+                menuSet.updateVisibility();
+            }
+        });
+
         //Add buttons to linear layout.
         layout.addView(attack);
         layout.addView(move);
