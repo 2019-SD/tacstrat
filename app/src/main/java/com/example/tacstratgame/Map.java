@@ -198,7 +198,7 @@ public class Map {
             // Each letter represents a different type of tile
             switch(item){
                 case "s":
-                    map[row][column] = new Tile(R.drawable.sand_tile, 2, 2);
+                    map[row][column] = new Tile(R.drawable.sand_tile_3, 2, 2);
                     break;
                 case "b":
                     map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1);
@@ -207,7 +207,7 @@ public class Map {
                     map[row][column] = new Tile(R.drawable.standard_tile, 1, 0);
                     break;
                 case "w":
-                    map[row][column] = new Tile(R.drawable.water_tile, 3, 0);
+                    map[row][column] = new Tile(R.drawable.water_tile_3, 3, 0);
                     break;
                 default:
                     if (column == 0) {
