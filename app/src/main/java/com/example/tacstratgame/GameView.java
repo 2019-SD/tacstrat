@@ -103,6 +103,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         } else{
                             map.stopDrawingMove();
                         }
+                    } else if( map.drawingAttack()){
+                        map.attack(map.getX(x), map.getY(y));
+                        menuSet.setTileDrawValue(false);
+                        menuSet.updateVisibility();
+                        game.invalidate();
+                        return true;
                     }
                     else if(tile.hasUnit()){
                         //commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time

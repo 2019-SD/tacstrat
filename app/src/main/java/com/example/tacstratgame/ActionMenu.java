@@ -78,7 +78,17 @@ public class ActionMenu extends ScrollView {
             @Override
             public void onClick(View v) {
                 drawValue = false;
-                map.attack(tile.getUnit());
+                map.attackRange(tile.getUnit());
+                menuSet.setTileDrawValue(false);
+                menuSet.setPlayerDrawValue(false);
+                menuSet.updateVisibility();
+            }
+        });
+        defend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawValue = false;
+                map.defend(tile.getUnit());
                 menuSet.setTileDrawValue(false);
                 menuSet.setPlayerDrawValue(false);
                 menuSet.updateVisibility();

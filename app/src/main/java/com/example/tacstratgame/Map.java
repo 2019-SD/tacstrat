@@ -14,7 +14,7 @@ import static android.graphics.Color.WHITE;
 public class Map {
     private Tile[][] map;
     private Resources resources;
-    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private int screenWidth = (int)(Resources.getSystem().getDisplayMetrics().widthPixels*.9);
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private int interval;
     private int unusedPix;
@@ -293,6 +293,11 @@ public class Map {
     public boolean drawingMove() { return drawMode == 1;}
 
     /**
+     * @return Boolean of if map is drawing attack range
+     */
+    public boolean drawingAttack() { return drawMode == 2;}
+
+    /**
      * Returns the boolean value that is if x and y are in the current moving units range
      * @param x x position in map array
      * @param y y position in map array
@@ -306,9 +311,9 @@ public class Map {
      * @param y y position to move unit to
      */
     public void moveUnit(int x, int y){
+        drawMode = 0;
         map[movingUnit.getX()][movingUnit.getY()].setUnit(null);
         map[x][y].setUnit(movingUnit);
-        drawMode = 0;
         movingUnit.setX(x);
         movingUnit.setY(y);
     }
@@ -322,7 +327,7 @@ public class Map {
      * Draws the attack range of a given unit by recursively finding all permutations
      * @param unit The unit to find the attack range of
      */
-    public void attack(Unit unit) {
+    public void attackRange(Unit unit) {
         movingUnit = unit;
         drawMode = 0; // Ensure this doesn't get drawn until its done
         visited = new boolean[width][height];
@@ -360,5 +365,32 @@ public class Map {
             attackSpread(x, y + 1, attack);
 
         }
+    }
+
+    /**
+     * Attacks a unit in a valid range or cancels the attack command
+     * @param x X coordinate of unit getting attacked
+     * @param y Y coordinate of unit getting attacked
+     */
+    public void attack(int x, int y){
+        drawMode = 0;
+        if(visited[x][y]){
+            if(map[x][y].hasUnit()){
+                Unit unit = map[x][y].getUnit();
+                unit.setHp(unit.getHp()-(movingUnit.getAttack()-unit.getDefense()));
+                if (unit.getHp() <= 0){
+                    unitList.remove(unit);
+                    map[x][y].setUnit(null);
+                }
+            }
+        }
+    }
+
+    /**
+     * Makes the unit defend, increasing defence and ending its turn
+     * @param unit Unit who is defending
+     */
+    public void defend(Unit unit){
+        System.out.println("DEFENDING!!!!!!");
     }
 }
