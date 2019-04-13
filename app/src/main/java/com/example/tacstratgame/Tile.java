@@ -11,11 +11,13 @@ public class Tile {
     private int movementReduction; // The amount that traveling over this tile will reduce available movement
     private int effect; // Possible special effect of this tile
     private Unit unit = null; // Unit on this tile, null if no unit
+    private int defenseBuff;
 
-    public Tile(int picture, int movementReduction, int effect){
+    public Tile(int picture, int movementReduction, int effect, int defenseBuff){
         this.picture = picture;
         this.movementReduction = movementReduction;
         this.effect = effect;
+        this.defenseBuff = defenseBuff;
     }
 
     public int getPicture() {
@@ -37,4 +39,6 @@ public class Tile {
     public void setUnit(Unit u) { unit = u; }
 
     public boolean hasUnit() { return unit !=null; }
+
+    public int getDefenseBuff() { return defenseBuff; }
 }

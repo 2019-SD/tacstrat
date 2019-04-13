@@ -126,8 +126,10 @@ public class Map {
             highlight.setHasAlpha(true);
             if (drawMode == 1) {
                 highlight.eraseColor(0x4D0000FF); // 70% transparent
-            } else {
+            } else if (drawMode == 2) {
                 highlight.eraseColor(0x4DFF0000);
+            } else{
+                highlight.eraseColor(0x4D00FF00);
             }
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
@@ -198,16 +200,16 @@ public class Map {
             // Each letter represents a different type of tile
             switch(item){
                 case "s":
-                    map[row][column] = new Tile(R.drawable.sand_tile_3, 2, 2);
+                    map[row][column] = new Tile(R.drawable.sand_tile_3, 2, 2, -25);
                     break;
                 case "b":
-                    map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1);
+                    map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1, 0);
                     break;
                 case "f":
-                    map[row][column] = new Tile(R.drawable.standard_tile, 1, 0);
+                    map[row][column] = new Tile(R.drawable.standard_tile, 1, 0, 0);
                     break;
                 case "w":
-                    map[row][column] = new Tile(R.drawable.water_tile_3, 3, 0);
+                    map[row][column] = new Tile(R.drawable.water_tile_3, 3, 2, -50);
                     break;
                 default:
                     if (column == 0) {
@@ -298,6 +300,10 @@ public class Map {
     public boolean drawingAttack() { return drawMode == 2;}
 
     /**
+     * @return Boolean of if map is drawing attack range
+     */
+    public boolean drawingSpecial() { return drawMode == 3;}
+    /**
      * Returns the boolean value that is if x and y are in the current moving units range
      * @param x x position in map array
      * @param y y position in map array
@@ -327,7 +333,7 @@ public class Map {
      * Draws the attack range of a given unit by recursively finding all permutations
      * @param unit The unit to find the attack range of
      */
-    public void attackRange(Unit unit) {
+    public void attackRange(Unit unit, int mode) {
         movingUnit = unit;
         drawMode = 0; // Ensure this doesn't get drawn until its done
         visited = new boolean[width][height];
@@ -339,7 +345,11 @@ public class Map {
         attackSpread(x, y - 1, attack);
         attackSpread(x, y + 1, attack);
         visited[x][y] = false; //The square the unit is on should not be able to be attacked
-        drawMode = 2; // The visited range is ready to draw
+        drawMode = mode; // The visited range is ready to draw
+    }
+
+    public void attackRange(Unit unit) {
+        attackRange(unit, 2);
     }
 
     /**
@@ -377,7 +387,10 @@ public class Map {
         if(visited[x][y]){
             if(map[x][y].hasUnit()){
                 Unit unit = map[x][y].getUnit();
-                unit.setHp(unit.getHp()-(movingUnit.getAttack()-unit.getDefense()));
+                int damage = movingUnit.getAttack()-(unit.getDefense()+ map[x][y].getDefenseBuff());
+                if (damage > 0){
+                    unit.setHp(unit.getHp()-damage);
+                }
                 if (unit.getHp() <= 0){
                     unitList.remove(unit);
                     map[x][y].setUnit(null);
@@ -392,5 +405,23 @@ public class Map {
      */
     public void defend(Unit unit){
         System.out.println("DEFENDING!!!!!!");
+    }
+
+    /**
+     * Heals a unit in a valid range or cancels the special command
+     * @param x X coordinate of unit getting healed
+     * @param y Y coordinate of unit getting healed
+     */
+    public void special(int x, int y){
+        drawMode = 0;
+        if (visited[x][y]) {
+            if (map[x][y].hasUnit()) {
+                Unit unit = map[x][y].getUnit();
+                unit.setHp(unit.getHp()+((Medic) movingUnit).getHeal()); //Will only be here if movingUnit is a medic
+                if(unit.getHp() > unit.getHpMax()){
+                    unit.setHp(unit.getHpMax());
+                }
+            }
+        }
     }
 }
