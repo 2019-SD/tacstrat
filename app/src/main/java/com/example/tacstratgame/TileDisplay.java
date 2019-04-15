@@ -40,6 +40,12 @@ public class TileDisplay extends TextView {
             case R.drawable.sand_tile_3:
                 description = "Sand";
                 break;
+            case R.drawable.sand_tile_2:
+                description = "Sand";
+                break;
+            case R.drawable.sand_tile:
+                description = "Sand";
+                break;
             case R.drawable.building_tile:
                 description = "Buildings";
                 break;
@@ -50,6 +56,12 @@ public class TileDisplay extends TextView {
                 description = "Plains";
                 break;
             case R.drawable.water_tile_3:
+                description = "Water";
+                break;
+            case R.drawable.water_tile_2:
+                description = "Water";
+                break;
+            case R.drawable.water_tile:
                 description = "Water";
                 break;
             default:
