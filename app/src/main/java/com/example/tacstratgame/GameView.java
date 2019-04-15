@@ -26,7 +26,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         getHolder().addCallback(this);
         this.game = game;
         this.menuSet = menuSet;
-        map = new Map(3, getResources());
+        map = new Map(1, getResources());
         this.menuSet.setMap(map);
         mainThread = new MainThread(game, this, menuSet);
         setFocusable(true);
@@ -81,7 +81,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         switch(e.getAction()) {
             //When user first touches the screen.
             case MotionEvent.ACTION_DOWN:
-                //commandMenu.setDrawValue(false);
                 menuSet.setActionDrawValue(false);
                 menuSet.setEnemyDrawValue(false);
                 menuSet.setPlayerDrawValue(false);
@@ -109,9 +108,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         menuSet.updateVisibility();
                         game.invalidate();
                         return true;
+                    } else if( map.drawingSpecial()){
+                        map.special(map.getX(x), map.getY(y));
+                        menuSet.setTileDrawValue(false);
+                        menuSet.updateVisibility();
+                        game.invalidate();
+                        return true;
                     }
                     else if(tile.hasUnit()){
-                        //commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time
                         menuSet.setActionDrawValue(true);
                         menuSet.setPlayerDrawValue(true);
                     }
@@ -129,10 +133,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas) {
         super.draw(canvas);
         map.draw(canvas);
-        //if(commandMenu.getDrawValue()){
-           // commandMenu.draw(canvas);
-       // }
-
     }
 
 

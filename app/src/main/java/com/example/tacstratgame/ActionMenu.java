@@ -94,12 +94,21 @@ public class ActionMenu extends ScrollView {
                 menuSet.updateVisibility();
             }
         });
+        special.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawValue = false;
+                map.attackRange(tile.getUnit(), 3); //Draws medic's heal range in green
+                menuSet.setTileDrawValue(false);
+                menuSet.setPlayerDrawValue(false);
+                menuSet.updateVisibility();
+            }
+        });
 
         //Add buttons to linear layout.
         layout.addView(attack);
         layout.addView(move);
         layout.addView(defend);
-        layout.addView(special);
         this.addView(layout);
         this.setRotation(90);
     }
@@ -108,7 +117,18 @@ public class ActionMenu extends ScrollView {
     public Map getMap() { return map; }
     public Tile getTile() { return tile; }
 
-    public void setDrawValue(boolean value)  { drawValue = value; }
+    public void setDrawValue(boolean value)  {
+        if(value) { //Adds the special button if the menu is being drawn and a medic is selected
+            if (tile != null && tile.getUnit() instanceof Medic) {
+                layout.removeView(special); //Have to remove it before it is added to make sure multiple don't get added
+                layout.addView(special);
+            } else {
+                layout.removeView(special); //Will remove the button or do nothing if it is not already added
+            }
+        }
+        drawValue = value;
+
+    }
     public void setMap (Map map) { this.map = map; }
     public void setMenuSet(MenuSet menuSet) { this.menuSet = menuSet; }
     public void setTile (Tile tile) { this.tile = tile; }

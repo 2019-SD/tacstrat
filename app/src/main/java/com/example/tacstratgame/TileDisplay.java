@@ -76,10 +76,13 @@ public class TileDisplay extends TextView {
                 effect = "Effect: None";
                 break;
             case 1:
-                effect = "Effect: Defense Buff";
+                effect = "Effect: Impassible";
                 break;
             case 2:
                 effect = "Effect: Defense Debuff";
+                break;
+            case 3:
+                effect = "Effect: Defense Buff";
                 break;
             default:
                 effect = null;
