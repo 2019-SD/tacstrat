@@ -10,13 +10,26 @@ public class Marksman implements Unit {
     private int range = 3;
     private int x;
     private int y;
+    private int team;
+    private int hasMoved;
+    private int hasAttacked;
+    private int hasDefended;
     private int image = R.drawable.cowboy;
 
-    public Marksman(int x, int y){
+    public Marksman(int x, int y, int team){
         this.x = x;
         this.y = y;
+        this.team = team;
+        hasMoved = 0;
+        hasAttacked = 0;
+        hasDefended = 0;
     }
 
+    @Override
+    public int getHasAttacked() { return hasAttacked; }
+    public int getHasDefended() { return hasDefended; }
+    public int getHasMoved() { return hasMoved; }
+    public int getTeam() { return team; }
     public int getAttack() {
         return attack;
     }
@@ -37,6 +50,9 @@ public class Marksman implements Unit {
     public int getY() { return y; }
     public int getImage(){ return image; }
 
+    public void setHasAttacked(int hasAttacked) { this.hasAttacked = hasAttacked; }
+    public void setHasDefended(int hasDefended) { this.hasDefended = hasDefended; }
+    public void setHasMoved(int hasMoved) { this.hasMoved = hasMoved; }
     public void setAttack(int attack){
         this.attack = attack;
     }
@@ -62,7 +78,7 @@ public class Marksman implements Unit {
     }
 
     public static void main( String []args ) {
-        Marksman mark = new Marksman(0,0);
+        Marksman mark = new Marksman(0,0, 1);
         mark.printStats();
     }
 }

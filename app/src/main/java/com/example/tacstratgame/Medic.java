@@ -12,14 +12,28 @@ public class Medic implements Unit {
     private int range = 1;
     private int x;
     private int y;
+    private int team;
+    private int hasMoved;
+    private int hasAttacked;
+    private int hasDefended;
     private int image = R.drawable.alien;
 
-    public Medic(int x, int y){
+    public Medic(int x, int y, int team){
         this.x = x;
         this.y = y;
+        this.team = team;
+        hasMoved = 0;
+        hasAttacked = 0;
+        hasDefended = 0;
     }
 
     // Getters
+
+    @Override
+    public int getHasAttacked() { return hasAttacked; }
+    public int getHasDefended() { return hasDefended; }
+    public int getHasMoved() { return hasMoved; }
+    public int getTeam() { return team; }
     public int getHeal( ) {
         return heal;
     }
@@ -47,7 +61,9 @@ public class Medic implements Unit {
     public void setHeal(int heal) {
         this.heal = heal;
     }
-
+    public void setHasAttacked(int hasAttacked) { this.hasAttacked = hasAttacked; }
+    public void setHasDefended(int hasDefended) { this.hasDefended = hasDefended; }
+    public void setHasMoved(int hasMoved) { this.hasMoved = hasMoved; }
     public void setAttack(int attack){
         this.attack = attack;
     }
@@ -74,7 +90,7 @@ public class Medic implements Unit {
     }
 
     public static void main( String []args ) {
-        Medic med = new Medic(0,0);
+        Medic med = new Medic(0,0, 1);
         med.printStats();
     }
 }

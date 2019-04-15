@@ -1,6 +1,11 @@
 package com.example.tacstratgame;
 
 public interface Unit {
+
+    int getTeam();
+    int getHasMoved();
+    int getHasAttacked();
+    int getHasDefended();
     int getAttack();
     int getDefense();
     int getHp();
@@ -11,6 +16,9 @@ public interface Unit {
     int getY();
     int getImage();
 
+    void setHasAttacked(int hasAttacked);
+    void setHasDefended(int hasDefended);
+    void setHasMoved(int hasMoved);
     void setAttack(int attack);
     void setDefense(int defense);
     void setHp(int hp);
