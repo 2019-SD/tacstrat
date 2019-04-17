@@ -219,30 +219,17 @@ public class Map {
                         column--;
                     }
                     Unit unit;
-                    if (item.compareTo("art1") == 0) {
-                        unit = new Artillery(row, column, 1);
-                    } else if (item.compareTo("art2") == 0) {
-                        unit = new Artillery(row, column, 2);
-                    } else if (item.compareTo("inf1") == 0) {
-                        unit = new Infantry(row, column, 1);
-                    } else if (item.compareTo("inf2") == 0) {
-                        unit = new Infantry(row, column, 2);
-                    } else if (item.compareTo("cav1") == 0) {
-                        unit = new Cavalry(row, column, 1);
-                    } else if (item.compareTo("cav2") == 0) {
-                        unit = new Cavalry(row, column, 2);
-                    } else if (item.compareTo("mar1") == 0) {
-                        unit = new Marksman(row, column, 1);
-                    } else if (item.compareTo("mar2") == 0) {
-                        unit = new Marksman(row, column, 2);
-                    } else if (item.compareTo("med1") == 0) {
-                        unit = new Medic(row, column, 1);
-                    } else if (item.compareTo("med2") == 0) {
-                        unit = new Medic(row, column, 2);
+                    if (item.compareTo("art") == 0) {
+                        unit = new Artillery(row, column);
+                    } else if (item.compareTo("cav") == 0) {
+                        unit = new Cavalry(row, column);
+                    } else if (item.compareTo("inf") == 0) {
+                        unit = new Infantry(row, column);
+                    } else if (item.compareTo("mar") == 0) {
+                        unit = new Marksman(row, column);
                     } else {
-                        unit = new Medic(row, column, 1); //If matches nothing else unit interpreted as medic
+                        unit = new Medic(row, column); //If matches nothing else unit interpreted as medic
                     }
-
                     map[row][column].setUnit(unit);
                     unitList.add(unit);
                     break;
@@ -263,21 +250,17 @@ public class Map {
      */
     public void move(Unit unit){
         movingUnit = unit;
-
-        // Ensure unit is on the right team and that they haven't moved already this turn
-        if ( unit.getTeam() == GameView.getTurn() && unit.getHasMoved() == 0 ) {
-            drawMode = 0; // Ensure this doesn't get drawn until its done
-            visited = new boolean[width][height];
-            int movement = unit.getMvmt();
-            int x = unit.getX(); //The width location on the grid where the unit is
-            int y = unit.getY(); //The height location on the grid where the unit is
-            moveSpread(x - 1, y, movement);
-            moveSpread(x + 1, y, movement);
-            moveSpread(x, y - 1, movement);
-            moveSpread(x, y + 1, movement);
-            visited[x][y] = false; //The square the unit is on should not be able to be moved to
-            drawMode = 1; // The visited range is ready to draw
-        }
+        drawMode = 0; // Ensure this doesn't get drawn until its done
+        visited = new boolean[width][height];
+        int movement = unit.getMvmt();
+        int x = unit.getX(); //The width location on the grid where the unit is
+        int y = unit.getY(); //The height location on the grid where the unit is
+        moveSpread(x-1, y, movement);
+        moveSpread(x+1, y, movement);
+        moveSpread(x, y-1, movement);
+        moveSpread(x, y+1, movement);
+        visited[x][y] = false; //The square the unit is on should not be able to be moved to
+        drawMode = 1; // The visited range is ready to draw
     }
 
     /**
@@ -339,7 +322,6 @@ public class Map {
         map[x][y].setUnit(movingUnit);
         movingUnit.setX(x);
         movingUnit.setY(y);
-        movingUnit.setHasMoved(1);
     }
 
     /**
@@ -353,19 +335,17 @@ public class Map {
      */
     public void attackRange(Unit unit, int mode) {
         movingUnit = unit;
-        if ( unit.getTeam() == GameView.getTurn() && unit.getHasAttacked() == 0 ) {
-            drawMode = 0; // Ensure this doesn't get drawn until its done
-            visited = new boolean[width][height];
-            int attack = unit.getRange();
-            int x = unit.getX(); //The width location on the grid where the unit is
-            int y = unit.getY(); //The height location on the grid where the unit is
-            attackSpread(x - 1, y, attack);
-            attackSpread(x + 1, y, attack);
-            attackSpread(x, y - 1, attack);
-            attackSpread(x, y + 1, attack);
-            visited[x][y] = false; //The square the unit is on should not be able to be attacked
-            drawMode = 2; // The visited range is ready to draw
-        }
+        drawMode = 0; // Ensure this doesn't get drawn until its done
+        visited = new boolean[width][height];
+        int attack = unit.getRange();
+        int x = unit.getX(); //The width location on the grid where the unit is
+        int y = unit.getY(); //The height location on the grid where the unit is
+        attackSpread(x - 1, y, attack);
+        attackSpread(x + 1, y, attack);
+        attackSpread(x, y - 1, attack);
+        attackSpread(x, y + 1, attack);
+        visited[x][y] = false; //The square the unit is on should not be able to be attacked
+        drawMode = mode; // The visited range is ready to draw
     }
 
     public void attackRange(Unit unit) {
@@ -407,15 +387,13 @@ public class Map {
         if(visited[x][y]){
             if(map[x][y].hasUnit()){
                 Unit unit = map[x][y].getUnit();
-                if ( unit.getTeam() != GameView.getTurn() ) {
-                    unit.setHp(unit.getHp() - (movingUnit.getAttack() - unit.getDefense()));
-                    movingUnit.setHasAttacked(1);
-                    if (unit.getHp() <= 0) {
-                        unitList.remove(unit);
-                        map[x][y].setUnit(null);
-                    }
-                } else {
-                    System.out.println( "NO FRIENDLY FIRE!!!\n");
+                int damage = movingUnit.getAttack()-(unit.getDefense()+ map[x][y].getDefenseBuff());
+                if (damage > 0){
+                    unit.setHp(unit.getHp()-damage);
+                }
+                if (unit.getHp() <= 0){
+                    unitList.remove(unit);
+                    map[x][y].setUnit(null);
                 }
             }
         }

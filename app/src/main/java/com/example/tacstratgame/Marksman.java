@@ -10,26 +10,14 @@ public class Marksman implements Unit {
     private int range = 3;
     private int x;
     private int y;
-    private int team;
-    private int hasMoved;
-    private int hasAttacked;
-    private int hasDefended;
     private int image = R.drawable.cowboy;
+    private String name = "Marksman";
 
-    public Marksman(int x, int y, int team){
+    public Marksman(int x, int y){
         this.x = x;
         this.y = y;
-        this.team = team;
-        hasMoved = 0;
-        hasAttacked = 0;
-        hasDefended = 0;
     }
 
-    @Override
-    public int getHasAttacked() { return hasAttacked; }
-    public int getHasDefended() { return hasDefended; }
-    public int getHasMoved() { return hasMoved; }
-    public int getTeam() { return team; }
     public int getAttack() {
         return attack;
     }
@@ -49,10 +37,8 @@ public class Marksman implements Unit {
     public int getX() { return x; }
     public int getY() { return y; }
     public int getImage(){ return image; }
+    public String getName() { return name; }
 
-    public void setHasAttacked(int hasAttacked) { this.hasAttacked = hasAttacked; }
-    public void setHasDefended(int hasDefended) { this.hasDefended = hasDefended; }
-    public void setHasMoved(int hasMoved) { this.hasMoved = hasMoved; }
     public void setAttack(int attack){
         this.attack = attack;
     }
@@ -71,6 +57,7 @@ public class Marksman implements Unit {
     }
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
+    public void setName(String name) { this.name = name; }
 
     public void printStats( ) {
         System.out.printf( "Marksman Stats:\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", attack, defense, hp, mvmt, range );
@@ -78,7 +65,7 @@ public class Marksman implements Unit {
     }
 
     public static void main( String []args ) {
-        Marksman mark = new Marksman(0,0, 1);
+        Marksman mark = new Marksman(0,0);
         mark.printStats();
     }
 }

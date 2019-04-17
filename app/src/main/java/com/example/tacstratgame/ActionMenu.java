@@ -121,9 +121,13 @@ public class ActionMenu extends ScrollView {
         if(value) { //Adds the special button if the menu is being drawn and a medic is selected
             if (tile != null && tile.getUnit() instanceof Medic) {
                 layout.removeView(special); //Have to remove it before it is added to make sure multiple don't get added
+                special.setText("Heal");
                 layout.addView(special);
+                this.setScrollbarFadingEnabled(false);
             } else {
                 layout.removeView(special); //Will remove the button or do nothing if it is not already added
+                special.setText("Special");
+                this.setScrollbarFadingEnabled(true);
             }
         }
         drawValue = value;
