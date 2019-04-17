@@ -19,6 +19,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private CommandMenu commandMenu;
     private Game game;
     private MenuSet menuSet;
+    private static int turn = 1;
 
     public GameView(Context context, Game game, MenuSet menuSet) {
         super(context);
@@ -35,6 +36,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         commandMenu = new CommandMenu(x0, y0, 0, screenHeight);
 
     }
+
+    public static int getTurn() { return turn; }
+
+    public static void setTurn(int turn) {
+        GameView.turn = turn;
+    }
+
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
