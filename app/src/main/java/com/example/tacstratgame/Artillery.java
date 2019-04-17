@@ -10,14 +10,27 @@ public class Artillery implements Unit {
     private int range = 3;
     private int x;
     private int y;
+    private int team;
+    private int hasMoved;
+    private int hasAttacked;
+    private int hasDefended;
     private int image = R.drawable.lightning_circle;
     private String name = "Artillery";
 
-    public Artillery(int x, int y) {
+    public Artillery(int x, int y, int team) {
         this.x = x;
         this.y = y;
+        this.team = team;
+        hasMoved = 0;
+        hasAttacked = 0;
+        hasDefended = 0;
     }
 
+    @Override
+    public int getHasDefended() { return hasDefended; }
+    public int getHasAttacked() { return hasAttacked; }
+    public int getHasMoved() { return hasMoved; }
+    public int getTeam() { return team; }
     public int getAttack() { return attack; }
     public int getDefense(){ return defense; }
     public int getHp() { return hp; }
@@ -29,6 +42,9 @@ public class Artillery implements Unit {
     public int getImage(){ return image; }
     public String getName() { return name; }
 
+    public void setHasAttacked(int hasAttacked) { this.hasAttacked = hasAttacked; }
+    public void setHasDefended(int hasDefended) { this.hasDefended = hasDefended; }
+    public void setHasMoved(int hasMoved) { this.hasMoved = hasMoved; }
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
     public void setHp(int hp){ this.hp = hp; }
@@ -45,7 +61,7 @@ public class Artillery implements Unit {
     }
 
     public static void main( String []args ) {
-        Artillery art = new Artillery(0,0);
+        Artillery art = new Artillery(0,0, 1);
         art.printStats();
     }
 }
