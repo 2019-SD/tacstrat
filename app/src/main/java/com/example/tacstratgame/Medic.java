@@ -13,6 +13,7 @@ public class Medic implements Unit {
     private int x;
     private int y;
     private int image = R.drawable.medicbot;
+    private String name = "Medic";
 
     public Medic(int x, int y){
         this.x = x;
@@ -42,6 +43,7 @@ public class Medic implements Unit {
     public int getX() { return x; }
     public int getY() { return y; }
     public int getImage(){ return image; }
+    public String getName() { return name; }
 
     // Setters
     public void setHeal(int heal) {
@@ -66,6 +68,7 @@ public class Medic implements Unit {
     }
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
+    public void setName(String name) { this.name = name; }
 
 
     public void printStats( ) {

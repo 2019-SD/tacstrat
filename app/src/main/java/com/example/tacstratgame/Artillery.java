@@ -11,6 +11,7 @@ public class Artillery implements Unit {
     private int x;
     private int y;
     private int image = R.drawable.robot;
+    private String name = "Artillery";
 
     public Artillery(int x, int y) {
         this.x = x;
@@ -26,6 +27,7 @@ public class Artillery implements Unit {
     public int getX() { return x; }
     public int getY() { return y; }
     public int getImage(){ return image; }
+    public String getName() { return name;}
 
     public void setAttack(int attack){ this.attack = attack; }
     public void setDefense(int defense){ this.defense = defense; }
@@ -35,6 +37,7 @@ public class Artillery implements Unit {
     public void setRange(int range){ this.range = range; }
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
+    public void setName(String name) { this.name = name; }
 
     public void printStats( ) {
         System.out.printf( "Artillery Stats:\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", attack, defense, hp, mvmt, range );

@@ -18,43 +18,23 @@ public class Cavalry implements Unit {
         this.y = y;
     }
 
-    public int getAttack() {
-        return attack;
-    }
-    public int getDefense(){
-        return defense;
-    }
-    public int getHp() {
-        return hp;
-    }
+    public int getAttack() { return attack; }
+    public int getDefense(){ return defense;}
+    public int getHp() { return hp; }
     public int getHpMax() { return hpMax; }
-    public int getMvmt(){
-        return mvmt;
-    }
-    public int getRange(){
-        return range;
-    }
+    public int getMvmt(){ return mvmt;}
+    public int getRange(){ return range;}
     public int getX() { return x; }
     public int getY() { return y; }
     public int getImage(){ return image; }
     public String getName() { return name; }
 
-    public void setAttack(int attack){
-        this.attack = attack;
-    }
-    public void setDefense(int defense){
-        this.defense = defense;
-    }
-    public void setHp(int hp){
-        this.hp = hp;
-    }
+    public void setAttack(int attack){this.attack = attack;}
+    public void setDefense(int defense){this.defense = defense; }
+    public void setHp(int hp){ this.hp = hp; }
     public void setHpMax(int hpMax) { this.hpMax = hpMax; }
-    public void setMvmt(int mvmt){
-        this.mvmt = mvmt;
-    }
-    public void setRange(int range){
-        this.range = range;
-    }
+    public void setMvmt(int mvmt){this.mvmt = mvmt;}
+    public void setRange(int range){this.range = range;}
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
     public void setName(String name) { this.name = name; }
