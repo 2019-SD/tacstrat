@@ -11,6 +11,7 @@ public class Cavalry implements Unit {
     private int x;
     private int y;
     private int image = R.drawable.cat;
+    private String name = "Cavalry";
 
     public Cavalry(int x, int y){
         this.x = x;
@@ -36,6 +37,7 @@ public class Cavalry implements Unit {
     public int getX() { return x; }
     public int getY() { return y; }
     public int getImage(){ return image; }
+    public String getName() { return name; }
 
     public void setAttack(int attack){
         this.attack = attack;
@@ -55,6 +57,7 @@ public class Cavalry implements Unit {
     }
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
+    public void setName(String name) { this.name = name; }
 
     public void printStats( ) {
         System.out.printf( "Cavalry Stats:\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", attack, defense, hp, mvmt, range );

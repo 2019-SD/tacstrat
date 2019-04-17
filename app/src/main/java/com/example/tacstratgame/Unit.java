@@ -10,6 +10,7 @@ public interface Unit {
     int getX();
     int getY();
     int getImage();
+    String getName();
 
     void setAttack(int attack);
     void setDefense(int defense);
@@ -19,4 +20,5 @@ public interface Unit {
     void setRange(int range);
     void setX(int x);
     void setY(int y);
+    void setName(String name);
 }

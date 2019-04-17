@@ -13,10 +13,12 @@ public class PlayerUnitDisplay extends LinearLayout {
     private float screenWidth = (float) Resources.getSystem().getDisplayMetrics().widthPixels;
     private float screenHeight = (float) Resources.getSystem().getDisplayMetrics().heightPixels;
     private boolean drawValue;
+    private TextView playerName;
     private TextView healthPoints;
     private TextView defensePoints;
     private TextView attackPoints;
     private TextView movePoints;
+    private String nameStr;
     private String healthStr;
     private String defenseStr;
     private String attackStr;
@@ -25,39 +27,35 @@ public class PlayerUnitDisplay extends LinearLayout {
     public PlayerUnitDisplay(Context context) {
         super(context);
 
-        this.setOrientation(LinearLayout.VERTICAL);
+        this.setOrientation(LinearLayout.HORIZONTAL);
         drawValue = false;
 
+        playerName = new TextView(context);
         healthPoints = new TextView(context);
         defensePoints = new TextView(context);
         attackPoints = new TextView(context);
         movePoints = new TextView(context);
 
-        /*
-        healthPoints.setWidth((int) screenHeight / 4);
-        healthPoints.setHeight((int) (screenWidth / 10));
-        defensePoints.setWidth((int) screenHeight / 4);
-        defensePoints.setHeight((int) (screenWidth / 10));
-        attackPoints.setWidth((int) screenHeight / 4);
-        attackPoints.setHeight((int) (screenWidth / 10));
-        movePoints.setWidth((int) screenHeight / 4);
-        movePoints.setHeight((int) (screenWidth / 10));
-        */
-
+        playerName.setWidth((int) screenHeight / 6);
+        playerName.setHeight((int) screenWidth / 12);
         healthPoints.setWidth((int) screenHeight / 6);
-        healthPoints.setHeight((int) (screenWidth / 12));
+        healthPoints.setHeight((int) screenWidth / 12);
         defensePoints.setWidth((int) screenHeight / 6);
-        defensePoints.setHeight((int) (screenWidth / 12));
+        defensePoints.setHeight((int) screenWidth / 12);
         attackPoints.setWidth((int) screenHeight / 6);
-        attackPoints.setHeight((int) (screenWidth / 12));
+        attackPoints.setHeight((int) screenWidth / 12);
         movePoints.setWidth((int) screenHeight / 6);
-        movePoints.setHeight((int) (screenWidth / 12));
+        movePoints.setHeight((int) screenWidth / 12);
 
+        nameStr = null;
         healthStr = null;
         defenseStr = null;
         attackStr = null;
         moveStr = null;
 
+        playerName.setText(nameStr);
+        playerName.setTextSize(16);
+        playerName.setGravity(CENTER | CENTER_HORIZONTAL);
         healthPoints.setText(healthStr);
         healthPoints.setTextSize(12);
         healthPoints.setGravity(CENTER | CENTER_HORIZONTAL);
@@ -71,6 +69,20 @@ public class PlayerUnitDisplay extends LinearLayout {
         movePoints.setTextSize(12);
         movePoints.setGravity(CENTER | CENTER_HORIZONTAL);
 
+        LinearLayout.LayoutParams pnLoparams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.2f);
+        LinearLayout.LayoutParams hpLoparams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.2f);
+        LinearLayout.LayoutParams dpLoparams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.2f);
+        LinearLayout.LayoutParams apLoparams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.2f);
+        LinearLayout.LayoutParams mpLoparams = new LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 0.2f);
+
+        this.setWeightSum(1.0f);
+        playerName.setLayoutParams(pnLoparams);
+        healthPoints.setLayoutParams(hpLoparams);
+        defensePoints.setLayoutParams(dpLoparams);
+        attackPoints.setLayoutParams(apLoparams);
+        movePoints.setLayoutParams(mpLoparams);
+
+        this.addView(playerName);
         this.addView(healthPoints);
         this.addView(defensePoints);
         this.addView(attackPoints);
@@ -83,21 +95,25 @@ public class PlayerUnitDisplay extends LinearLayout {
 
     public void updateDisplay(Unit unit) {
         if (unit != null) {
+            nameStr = unit.getName();
             healthStr = "Health: " + Integer.toString(unit.getHp()) + " / " + Integer.toString(unit.getHpMax());
             defenseStr = "Defense: " + Integer.toString(unit.getDefense());
             attackStr = "Attack: " + Integer.toString(unit.getAttack());
             moveStr = "Move: " + Integer.toString(unit.getMvmt());
 
+            playerName.setText(nameStr);
             healthPoints.setText(healthStr);
             defensePoints.setText(defenseStr);
             attackPoints.setText(attackStr);
             movePoints.setText(moveStr);
         } else {
+            nameStr = null;
             healthStr = null;
             defenseStr = null;
             attackStr = null;
             moveStr = null;
 
+            playerName.setText(nameStr);
             healthPoints.setText(healthStr);
             defensePoints.setText(defenseStr);
             attackPoints.setText(attackStr);

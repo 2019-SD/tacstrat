@@ -3,6 +3,7 @@ package com.example.tacstratgame;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import static android.graphics.Color.LTGRAY;
 import static android.graphics.Color.TRANSPARENT;
@@ -42,7 +43,6 @@ public class MenuSet extends FrameLayout {
         tileDisplay.setPadding(15, 15, 15, 15);
         playerUnitDisplay.setBackgroundColor(TRANSPARENT | LTGRAY);
         playerUnitDisplay.setRotation(90);
-        //playerUnitDisplay.setPadding(15, 15, 15, 15);
 
         actionMenu.setVisibility(GONE);
         tileDisplay.setVisibility(GONE);
@@ -52,19 +52,23 @@ public class MenuSet extends FrameLayout {
         actionParams = new LayoutParams((int) (screenHeight / 4),(int) (screenWidth / 3));
         tileParams = new LayoutParams((int) (screenHeight / 6), (int) (screenWidth / 3));
         enemyParams = new LayoutParams((int) (screenWidth / 3), (int) (screenHeight / 6));
-        //playerParams = new LayoutParams((int) screenHeight, (int) (screenWidth / 10));
-        playerParams = new LayoutParams((int) (screenHeight / 6), (int) (screenWidth / 3));
+        playerParams = new LayoutParams((int) screenHeight, (int) (screenWidth / 10));
 
         actionParams.leftMargin = 0;
         actionParams.topMargin = (int) (screenHeight - (screenHeight / 4));
         tileParams.leftMargin = 20;
-        tileParams.topMargin = (int) screenHeight / 8;
+        tileParams.topMargin = 0;
         enemyParams.leftMargin = (int) (screenWidth / 3);
         enemyParams.topMargin = 0;
-        //playerParams.leftMargin = (int) (screenWidth - (4 * (screenWidth / 10)));
-        //playerParams.topMargin = 0;
-        playerParams.leftMargin = (int) (screenWidth - (screenWidth / 3));
-        playerParams.topMargin = (int) screenHeight / 8;
+        playerParams.leftMargin = 0;
+        playerParams.topMargin = ((int) screenHeight / 2) - ((int) (screenWidth - (screenHeight / 2)));
+        System.out.println("Screen height: " + screenHeight);
+        System.out.println("Screen width: " + screenWidth);
+        System.out.println("Top Margin: " + screenHeight / 2);
+        System.out.println("Get X: " + playerUnitDisplay.getX());
+        System.out.println("Width: " + playerUnitDisplay.getWidth());
+        System.out.println("PivotX: " + playerUnitDisplay.getPivotX());
+        System.out.println("PivotY: " + playerUnitDisplay.getPivotY());
 
         this.addView(actionMenu, actionParams);
         this.addView(tileDisplay, tileParams);
