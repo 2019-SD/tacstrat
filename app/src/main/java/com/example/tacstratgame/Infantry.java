@@ -10,7 +10,7 @@ public class Infantry implements Unit {
     private int range = 1;
     private int x;
     private int y;
-    private int image = R.drawable.lightning_circle;
+    private int image = R.drawable.alien;
 
     public Infantry(int x, int y){
         this.x = x;
