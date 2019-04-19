@@ -442,9 +442,12 @@ public class Map {
         if (visited[x][y]) {
             if (map[x][y].hasUnit()) {
                 Unit unit = map[x][y].getUnit();
-                unit.setHp(unit.getHp()+((Medic) movingUnit).getHeal()); //Will only be here if movingUnit is a medic
-                if(unit.getHp() > unit.getHpMax()){
-                    unit.setHp(unit.getHpMax());
+                if ( unit.getTeam() == GameView.getTurn() && unit.getHasHealed() == 0 ) {
+                    unit.setHp(unit.getHp() + ((Medic) movingUnit).getHeal()); //Will only be here if movingUnit is a medic
+                    if (unit.getHp() > unit.getHpMax()) {
+                        unit.setHp(unit.getHpMax());
+                    }
+                    unit.setHasHealed(1);
                 }
             }
         }
