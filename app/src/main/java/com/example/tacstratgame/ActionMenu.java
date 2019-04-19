@@ -23,6 +23,7 @@ public class ActionMenu extends ScrollView {
     private Button attack;
     private Button move;
     private Button defend;
+    private Button endTurn;
     private Button special;
 
     public ActionMenu(Context context) {
@@ -39,6 +40,7 @@ public class ActionMenu extends ScrollView {
         attack = new Button(context);
         move = new Button(context);
         defend = new Button(context);
+        endTurn = new Button(context);
         special = new Button(context);
 
         attack.setWidth((int) (screenHeight / 4));
@@ -47,6 +49,8 @@ public class ActionMenu extends ScrollView {
         move.setHeight((int) (screenWidth / 9));
         defend.setWidth((int) (screenHeight / 4));
         defend.setHeight((int) (screenWidth / 9));
+        endTurn.setWidth((int) (screenHeight / 4));
+        endTurn.setHeight((int) (screenWidth / 9));
         special.setWidth((int) (screenHeight / 4));
         special.setHeight((int) (screenWidth / 9));
 
@@ -59,6 +63,9 @@ public class ActionMenu extends ScrollView {
         defend.setText("Defend");
         defend.setTextSize(18);
         defend.setGravity(CENTER | CENTER_HORIZONTAL);
+        endTurn.setText("End Turn");
+        endTurn.setTextSize(18);
+        endTurn.setGravity(CENTER | CENTER_HORIZONTAL);
         special.setText("Special");
         special.setTextSize(18);
         special.setGravity(CENTER | CENTER_HORIZONTAL);
@@ -94,6 +101,16 @@ public class ActionMenu extends ScrollView {
                 menuSet.updateVisibility();
             }
         });
+        endTurn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawValue = false;
+                map.defend(tile.getUnit());
+                menuSet.setTileDrawValue(false);
+                menuSet.setPlayerDrawValue(false);
+                menuSet.updateVisibility();
+            }
+        });
         special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,6 +126,7 @@ public class ActionMenu extends ScrollView {
         layout.addView(attack);
         layout.addView(move);
         layout.addView(defend);
+        layout.addView(endTurn);
         this.addView(layout);
         this.setRotation(90);
     }
