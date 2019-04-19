@@ -14,7 +14,7 @@ public class Infantry implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
-    private int image = R.drawable.lightning_circle;
+    private int image = R.drawable.alien;
     private String name = "Infantry";
 
     public Infantry(int x, int y, int team){
@@ -58,6 +58,7 @@ public class Infantry implements Unit {
     public void setAttack(int attack){
         this.attack = attack;
     }
+    public void setImage(int image) { this.image = image; }
     public void setDefense(int defense){
         this.defense = defense;
     }

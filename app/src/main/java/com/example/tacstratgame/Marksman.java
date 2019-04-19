@@ -1,5 +1,6 @@
 package com.example.tacstratgame;
 
+
 public class Marksman implements Unit {
 
     private int attack = 75;

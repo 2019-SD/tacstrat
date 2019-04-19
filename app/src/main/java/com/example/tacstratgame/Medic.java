@@ -16,7 +16,7 @@ public class Medic implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
-    private int image = R.drawable.alien;
+    private int image = R.drawable.medicbot;
     private String name = "Medic";
 
     public Medic(int x, int y, int team){

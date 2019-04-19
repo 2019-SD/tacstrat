@@ -14,7 +14,7 @@ public class Artillery implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
-    private int image = R.drawable.lightning_circle;
+    private int image = R.drawable.robot;
     private String name = "Artillery";
 
     public Artillery(int x, int y, int team) {

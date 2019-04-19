@@ -61,7 +61,7 @@ public class MenuSet extends FrameLayout {
         enemyParams.leftMargin = (int) (screenWidth / 3);
         enemyParams.topMargin = 0;
         playerParams.leftMargin = 0;
-        playerParams.topMargin = ((int) screenHeight / 2) - ((int) (screenWidth - (screenHeight / 2)));
+        playerParams.topMargin = ((int) screenHeight / 2);
         System.out.println("Screen height: " + screenHeight);
         System.out.println("Screen width: " + screenWidth);
         System.out.println("Top Margin: " + screenHeight / 2);
