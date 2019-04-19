@@ -16,6 +16,7 @@ public class Medic implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
+    private int hasHealed;
     private int image = R.drawable.medicbot;
     private String name = "Medic";
 
@@ -31,6 +32,7 @@ public class Medic implements Unit {
     // Getters
 
     @Override
+    public  int getHasHealed() { return hasHealed; }
     public int getHasAttacked() { return hasAttacked; }
     public int getHasDefended() { return hasDefended; }
     public int getHasMoved() { return hasMoved; }
@@ -60,6 +62,8 @@ public class Medic implements Unit {
     public String getName() { return name; }
 
     // Setters
+
+    public void setHasHealed(int hasHealed) { this.hasHealed = hasHealed; }
     public void setHeal(int heal) {
         this.heal = heal;
     }

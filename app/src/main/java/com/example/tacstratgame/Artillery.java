@@ -30,6 +30,12 @@ public class Artillery implements Unit {
     public int getHasDefended() { return hasDefended; }
     public int getHasAttacked() { return hasAttacked; }
     public int getHasMoved() { return hasMoved; }
+
+    @Override
+    public int getHasHealed() {
+        return 0;
+    }
+
     public int getTeam() { return team; }
     public int getAttack() { return attack; }
     public int getDefense(){ return defense; }
@@ -41,6 +47,11 @@ public class Artillery implements Unit {
     public int getY() { return y; }
     public int getImage(){ return image; }
     public String getName() { return name; }
+
+    @Override
+    public void setHasHealed(int hasHealed) {
+
+    }
 
     public void setHasAttacked(int hasAttacked) { this.hasAttacked = hasAttacked; }
     public void setHasDefended(int hasDefended) { this.hasDefended = hasDefended; }

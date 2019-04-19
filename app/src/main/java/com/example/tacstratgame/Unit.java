@@ -4,6 +4,9 @@ public interface Unit {
 
     int getTeam();
     int getHasMoved();
+
+    int getHasHealed();
+
     int getHasAttacked();
     int getHasDefended();
     int getAttack();
@@ -17,6 +20,7 @@ public interface Unit {
     int getImage();
     String getName();
 
+    void setHasHealed( int hasHealed );
     void setHasAttacked(int hasAttacked);
     void setHasDefended(int hasDefended);
     void setHasMoved(int hasMoved);
