@@ -3,4 +3,13 @@
     <string name="start_but">Start</string>
     <string name="options_but">Options</string>
     <string name="menu_description">rock_background</string>
+    <string name="level_1">Level 1</string>
+    <string name="level__2">Level 2</string>
+    <string name="level_2">Level 2</string>
+    <string name="levels">Levels</string>
+    <string name="level_3">Level 3</string>
+    <string name="level__3">Level 3</string>
+    <string name="level__1">Level 1</string>
+    <string name="level_4">Level 4</string>
+    <string name="level__4">Level 4</string>
 </resources>

@@ -8,12 +8,19 @@ public class Game extends FrameLayout {
     private GameView gameView;
     private MenuSet menuSet;
 
+    public MenuSet getMenuSet(){
+        return menuSet;
+    }
 
-    public Game(Context context) {
+    public GameView getGameView() {
+        return gameView;
+    }
+
+    public Game(Context context, int i) {
         super(context);
 
         menuSet = new MenuSet (context);
-        gameView = new GameView(context, this, menuSet);
+        gameView = new GameView(context, i, this, menuSet);
 
     }
 

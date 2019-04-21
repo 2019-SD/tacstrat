@@ -20,13 +20,13 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private Game game;
     private MenuSet menuSet;
 
-    public GameView(Context context, Game game, MenuSet menuSet) {
+    public GameView(Context context,int i, Game game, MenuSet menuSet) {
         super(context);
 
         getHolder().addCallback(this);
         this.game = game;
         this.menuSet = menuSet;
-        map = new Map(3, getResources());
+        map = new Map(i, getResources());
         this.menuSet.setMap(map);
         mainThread = new MainThread(game, this, menuSet);
         setFocusable(true);
@@ -35,6 +35,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         commandMenu = new CommandMenu(x0, y0, 0, screenHeight);
 
     }
+
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 
