@@ -12,15 +12,11 @@ public class Game extends FrameLayout {
         return menuSet;
     }
 
-    public GameView getGameView() {
-        return gameView;
-    }
-
-    public Game(Context context, int i) {
+    public Game(Context context, MainActivity ref, int level) {
         super(context);
 
         menuSet = new MenuSet (context);
-        gameView = new GameView(context, i, this, menuSet);
+        gameView = new GameView(context, this, menuSet, ref, level);
 
     }
 

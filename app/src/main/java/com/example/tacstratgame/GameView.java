@@ -20,13 +20,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private Game game;
     private MenuSet menuSet;
 
-    public GameView(Context context,int i, Game game, MenuSet menuSet) {
+
+    public GameView(Context context, Game game, MenuSet menuSet, MainActivity ref, int level) {
         super(context);
 
         getHolder().addCallback(this);
         this.game = game;
         this.menuSet = menuSet;
-        map = new Map(i, getResources());
+        map = new Map(level, getResources(), ref);
         this.menuSet.setMap(map);
         mainThread = new MainThread(game, this, menuSet);
         setFocusable(true);
@@ -104,10 +105,23 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         } else{
                             map.stopDrawingMove();
                         }
+                    } else if( map.drawingAttack()){
+                        map.attack(map.getX(x), map.getY(y));
+                        menuSet.setTileDrawValue(false);
+                        menuSet.updateVisibility();
+                        game.invalidate();
+                        return true;
+                    } else if( map.drawingSpecial()){
+                        map.special(map.getX(x), map.getY(y));
+                        menuSet.setTileDrawValue(false);
+                        menuSet.updateVisibility();
+                        game.invalidate();
+                        return true;
                     }
-                    else if(tile.hasUnit()){
-                        //commandMenu.setDrawValue(true); //Only draws the menu if appropriate unit is selected at correct time
-                        menuSet.setActionDrawValue(true);
+                    else if(tile.hasUnit() ){
+                        if ( tile.getUnit().getTeam() == map.getTurn() ) {
+                            menuSet.setActionDrawValue(true);
+                        }
                         menuSet.setPlayerDrawValue(true);
                     }
                 }

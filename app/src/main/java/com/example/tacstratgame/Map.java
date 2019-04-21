@@ -1,5 +1,6 @@
 package com.example.tacstratgame;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -28,10 +29,16 @@ public class Map {
     private ArrayList<Unit> unitList;
     private Unit movingUnit;
     private int turn;
+    private int team1count;
+    private int team2count;
+    MainActivity ref;
 
-    public Map(int mapNum, Resources res) {
+    public Map(int mapNum, Resources res, MainActivity ref) {
         drawMode = 0;
         turn = 1;
+        team1count = 5;
+        team2count = 5;
+        this.ref = ref;
         unitList = new ArrayList<Unit>();
         resources = res;
         loadMap(mapNum);
@@ -173,6 +180,10 @@ public class Map {
 
         //Case statement can be expanded to include more levels as made
         switch (mapNum){
+            case 0:
+                level = resources.obtainTypedArray(R.array.level0);
+                team2count = 1;
+                break;
             case 1:
                 level = resources.obtainTypedArray(R.array.level1);
                 break;
@@ -435,6 +446,17 @@ public class Map {
                     if (unit.getHp() <= 0) {
                         unitList.remove(unit);
                         map[x][y].setUnit(null);
+                        if ( turn == 1 ) {
+                            team2count--;
+                            if ( team2count == 0 ) {
+                                ref.onGameEnd(1);
+                            }
+                        } else {
+                            team1count--;
+                            if ( team1count == 0 ) {
+                                ref.onGameEnd(2);
+                            }
+                        }
                     }
                 } else {
                     System.out.println( "NO FRIENDLY FIRE!!!\n");
