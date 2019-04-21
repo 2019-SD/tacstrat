@@ -37,7 +37,7 @@ public class TileDisplay extends TextView {
 
     public void updateTileInfo(Tile tile) {
         switch (tile.getPicture()) {
-            case R.drawable.sand_tile:
+            case R.drawable.sand_tile_3:
                 description = "Sand";
                 break;
             case R.drawable.building_tile:
@@ -49,7 +49,7 @@ public class TileDisplay extends TextView {
             case R.drawable.standard_tile:
                 description = "Plains";
                 break;
-            case R.drawable.water_tile:
+            case R.drawable.water_tile_3:
                 description = "Water";
                 break;
             default:
@@ -64,10 +64,13 @@ public class TileDisplay extends TextView {
                 effect = "Effect: None";
                 break;
             case 1:
-                effect = "Effect: Defense Buff";
+                effect = "Effect: Impassible";
                 break;
             case 2:
                 effect = "Effect: Defense Debuff";
+                break;
+            case 3:
+                effect = "Effect: Defense Buff";
                 break;
             default:
                 effect = null;

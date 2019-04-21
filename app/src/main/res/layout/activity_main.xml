@@ -37,52 +37,30 @@
     <Button
         android:id="@+id/button"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
-        android:layout_width="90dp"
+        android:layout_width="0dp"
         android:layout_height="52dp"
-        android:layout_marginTop="267dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="330dp"
         android:rotation="90"
         android:text="@string/start_but"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
-
-    <Button
-        android:id="@+id/button2"
-        style="@android:style/Widget.Material.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="388dp"
-        android:layout_marginEnd="96dp"
-        android:rotation="90"
-        android:text="@string/options_but"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="225dp"
-        android:layout_height="269dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="93dp"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="340dp"
         android:backgroundTint="@color/colorAccent"
         android:fontFamily="@font/allerta_stencil"
         android:orientation="horizontal"
         android:rotation="90"
         android:text="@string/app_name"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>

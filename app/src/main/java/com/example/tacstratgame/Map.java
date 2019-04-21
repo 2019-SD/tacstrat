@@ -14,7 +14,7 @@ import static android.graphics.Color.WHITE;
 public class Map {
     private Tile[][] map;
     private Resources resources;
-    private int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private int screenWidth = (int)(Resources.getSystem().getDisplayMetrics().widthPixels*.9);
     private int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private int interval;
     private int unusedPix;
@@ -23,13 +23,15 @@ public class Map {
     private int height;
     private float[] grid;
     private Paint gridPaint;
-    private boolean drawMove;
+    private int drawMode;
     private boolean[][] visited;
     private ArrayList<Unit> unitList;
     private Unit movingUnit;
+    private int turn;
 
     public Map(int mapNum, Resources res) {
-        drawMove = false;
+        drawMode = 0;
+        turn = 1;
         unitList = new ArrayList<Unit>();
         resources = res;
         loadMap(mapNum);
@@ -68,6 +70,14 @@ public class Map {
         gridPaint.setColor(WHITE);
     }
 
+    public int getTurn() { return turn; }
+    public void endTurn() {
+        if ( turn == 1 ) {
+            turn = 2;
+        } else {
+            turn = 1;
+        }
+    }
     //not currently being used
     public void setTile(int x, int  y,Tile tile){
         map[x][y] = tile;
@@ -112,7 +122,7 @@ public class Map {
 
     public void draw(Canvas canvas) {
         canvas.drawLines(grid, gridPaint);
-        if (!drawMove) { // If false, simply draws the map
+        if (drawMode == 0) { // If false, simply draws the map
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
                     Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
@@ -124,7 +134,13 @@ public class Map {
             Bitmap highlight = BitmapFactory.decodeResource(resources, R.drawable.standard_tile);
             highlight = Bitmap.createScaledBitmap(highlight, interval - 1, interval - 1, false);
             highlight.setHasAlpha(true);
-            highlight.eraseColor(0x4D0000FF); // 70% transparent
+            if (drawMode == 1) {
+                highlight.eraseColor(0x4D0000FF); // 70% transparent
+            } else if (drawMode == 2) {
+                highlight.eraseColor(0x4DFF0000);
+            } else{
+                highlight.eraseColor(0x4D00FF00);
+            }
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
                     Bitmap bit = BitmapFactory.decodeResource(resources, map[i][j].getPicture());
@@ -157,11 +173,8 @@ public class Map {
 
         //Case statement can be expanded to include more levels as made
         switch (mapNum){
-            case 0:
-                level = resources.obtainTypedArray(R.array.map0);
-                break;
             case 1:
-                level = resources.obtainTypedArray(R.array.map0);
+                level = resources.obtainTypedArray(R.array.level1);
                 break;
             case 2:
                 level = resources.obtainTypedArray(R.array.level2);
@@ -197,31 +210,51 @@ public class Map {
             // Each letter represents a different type of tile
             switch(item){
                 case "s":
-                    map[row][column] = new Tile(R.drawable.sand_tile, 2, 2);
+                    map[row][column] = new Tile(R.drawable.sand_tile_3, 2, 2, -25);
                     break;
                 case "b":
-                    map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1);
+                    map[row][column] = new Tile(R.drawable.building_tile_2, -1, 1, 0);
                     break;
                 case "f":
-                    map[row][column] = new Tile(R.drawable.standard_tile, 1, 0);
+                    map[row][column] = new Tile(R.drawable.standard_tile, 1, 0, 0);
                     break;
                 case "w":
-                    map[row][column] = new Tile(R.drawable.water_tile, 3, 0);
+                    map[row][column] = new Tile(R.drawable.water_tile_3, 3, 2, -50);
                     break;
-                case "cav":
-                    if (column == 0){
-                        column = height-1;
+                default:
+                    if (column == 0) {
+                        column = height - 1;
                         row--;
                     }else{
                         column--;
                     }
-                    Cavalry cav = new Cavalry(row,column); // This will be how enemy units will be set
-                    map[row][column].setUnit(cav);
-                    unitList.add(cav);
-                    break;
+                    Unit unit;
+                    if (item.compareTo("art1") == 0) {
+                        unit = new Artillery(row, column, 1);
+                    } else if (item.compareTo("art2") == 0) {
+                        unit = new Artillery(row, column, 2);
+                    } else if (item.compareTo("inf1") == 0) {
+                        unit = new Infantry(row, column, 1);
+                    } else if (item.compareTo("inf2") == 0) {
+                        unit = new Infantry(row, column, 2);
+                    } else if (item.compareTo("cav1") == 0) {
+                        unit = new Cavalry(row, column, 1);
+                    } else if (item.compareTo("cav2") == 0) {
+                        unit = new Cavalry(row, column, 2);
+                    } else if (item.compareTo("mar1") == 0) {
+                        unit = new Marksman(row, column, 1);
+                    } else if (item.compareTo("mar2") == 0) {
+                        unit = new Marksman(row, column, 2);
+                    } else if (item.compareTo("med1") == 0) {
+                        unit = new Medic(row, column, 1);
+                    } else if (item.compareTo("med2") == 0) {
+                        unit = new Medic(row, column, 2);
+                    } else {
+                        unit = new Medic(row, column, 1); //If matches nothing else unit interpreted as medic
+                    }
 
-                default:
-                    map[row][column] = new Tile(R.drawable.lightning_circle,-1,-1);
+                    map[row][column].setUnit(unit);
+                    unitList.add(unit);
                     break;
             }
             index++;
@@ -240,17 +273,21 @@ public class Map {
      */
     public void move(Unit unit){
         movingUnit = unit;
-        drawMove = false; // Ensure this doesn't get drawn until its done
-        visited = new boolean[width][height];
-        int movement = unit.getMvmt();
-        int x = unit.getX(); //The width location on the grid where the unit is
-        int y = unit.getY(); //The height location on the grid where the unit is
-        moveSpread(x-1, y, movement);
-        moveSpread(x+1, y, movement);
-        moveSpread(x, y-1, movement);
-        moveSpread(x, y+1, movement);
-        visited[x][y] = false; //The square the unit is on should not be able to be moved to
-        drawMove = true; // The visited range is ready to draw
+
+        // Ensure unit is on the right team and that they haven't moved already this turn
+        if ( unit.getTeam() == turn && unit.getHasMoved() == 0 && unit.getHasDefended() == 0 ) {
+            drawMode = 0; // Ensure this doesn't get drawn until its done
+            visited = new boolean[width][height];
+            int movement = unit.getMvmt();
+            int x = unit.getX(); //The width location on the grid where the unit is
+            int y = unit.getY(); //The height location on the grid where the unit is
+            moveSpread(x - 1, y, movement);
+            moveSpread(x + 1, y, movement);
+            moveSpread(x, y - 1, movement);
+            moveSpread(x, y + 1, movement);
+            visited[x][y] = false; //The square the unit is on should not be able to be moved to
+            drawMode = 1; // The visited range is ready to draw
+        }
     }
 
     /**
@@ -282,8 +319,17 @@ public class Map {
     /**
      * @return Boolean of if map is drawing movement range
      */
-    public boolean drawingMove(){ return drawMove; }
+    public boolean drawingMove() { return drawMode == 1;}
 
+    /**
+     * @return Boolean of if map is drawing attack range
+     */
+    public boolean drawingAttack() { return drawMode == 2;}
+
+    /**
+     * @return Boolean of if map is drawing attack range
+     */
+    public boolean drawingSpecial() { return drawMode == 3;}
     /**
      * Returns the boolean value that is if x and y are in the current moving units range
      * @param x x position in map array
@@ -298,15 +344,122 @@ public class Map {
      * @param y y position to move unit to
      */
     public void moveUnit(int x, int y){
+        drawMode = 0;
         map[movingUnit.getX()][movingUnit.getY()].setUnit(null);
         map[x][y].setUnit(movingUnit);
-        drawMove = false;
         movingUnit.setX(x);
         movingUnit.setY(y);
+        movingUnit.setHasMoved(1);
     }
 
     /**
      * Stops the map from drawing the movement range
      */
-    public void stopDrawingMove(){drawMove = false;}
+    public void stopDrawingMove() { drawMode = 0;}
+
+    /**
+     * Draws the attack range of a given unit by recursively finding all permutations
+     * @param unit The unit to find the attack range of
+     */
+    public void attackRange(Unit unit, int mode) {
+        int beforeX;
+        int beforeY;
+
+        movingUnit = unit;
+        if ( unit.getTeam() == turn && unit.getHasAttacked() == 0 && unit.getHasDefended() == 0 ) {
+            drawMode = 0; // Ensure this doesn't get drawn until its done
+            visited = new boolean[width][height];
+            int attack = unit.getRange();
+            int x = unit.getX(); //The width location on the grid where the unit is
+            int y = unit.getY(); //The height location on the grid where the unit is
+            attackSpread(x - 1, y, attack);
+            attackSpread(x + 1, y, attack);
+            attackSpread(x, y - 1, attack);
+            attackSpread(x, y + 1, attack);
+            visited[x][y] = false; //The square the unit is on should not be able to be attacked
+            drawMode = 2; // The visited range is ready to draw
+        }
+    }
+
+    public void attackRange( Unit unit ) {
+        attackRange( unit, 2 );
+    }
+
+    /**
+     * A helper function that finds a units attack range by recursively stepping through all
+     * possible permutations.
+     *
+     * @param x      the current width value being tested
+     * @param y      the current height value being tested
+     * @param attack the remaining attack range
+     */
+    private void attackSpread(int x, int y, int attack) {
+        if (x < 0 || y < 0 || x >= width || y >= height) {
+            return;
+        }
+        if (map[x][y].getMovementReduction() == -1 || attack == 0) {
+            return;
+        } else {
+            attack = attack - 1;
+            visited[x][y] = true;
+            attackSpread(x - 1, y, attack);
+            attackSpread(x + 1, y, attack);
+            attackSpread(x, y - 1, attack);
+            attackSpread(x, y + 1, attack);
+
+        }
+    }
+
+    /**
+     * Attacks a unit in a valid range or cancels the attack command
+     * @param x X coordinate of unit getting attacked
+     * @param y Y coordinate of unit getting attacked
+     */
+    public void attack(int x, int y){
+        drawMode = 0;
+        if(visited[x][y]){
+            if(map[x][y].hasUnit()){
+                Unit unit = map[x][y].getUnit();
+                if ( unit.getTeam() != turn ) {
+                    unit.setHp(unit.getHp() - (movingUnit.getAttack() - unit.getDefense()));
+                    movingUnit.setHasAttacked(1);
+                    if (unit.getHp() <= 0) {
+                        unitList.remove(unit);
+                        map[x][y].setUnit(null);
+                    }
+                } else {
+                    System.out.println( "NO FRIENDLY FIRE!!!\n");
+                }
+            }
+        }
+    }
+
+    /**
+     * Makes the unit defend, increasing defence and ending its turn
+     * @param unit Unit who is defending
+     */
+    public void defend(Unit unit){
+        System.out.println("DEFENDING!!!!!!");
+    }
+
+    /**
+     * Heals a unit in a valid range or cancels the special command
+     * @param x X coordinate of unit getting healed
+     * @param y Y coordinate of unit getting healed
+     */
+    public void special(int x, int y){
+        drawMode = 0;
+        if (visited[x][y]) {
+            if (map[x][y].hasUnit()) {
+                Unit unit = map[x][y].getUnit();
+                if ( unit.getTeam() == turn && unit.getHasHealed() == 0 ) {
+                    unit.setHp(unit.getHp() + ((Medic) movingUnit).getHeal()); //Will only be here if movingUnit is a medic
+                    if (unit.getHp() > unit.getHpMax()) {
+                        unit.setHp(unit.getHpMax());
+                    }
+                    unit.setHasHealed(1);
+                }
+            }
+        }
+    }
 }
