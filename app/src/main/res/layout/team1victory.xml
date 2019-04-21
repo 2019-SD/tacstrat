@@ -35,26 +35,23 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/exit1"
         style="@android:style/Widget.Material.Button.Borderless.Colored"
         android:layout_width="90dp"
         android:layout_height="52dp"
-        android:layout_marginTop="267dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="350dp"
         android:rotation="90"
         android:text="@string/start_but"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="225dp"
         android:layout_height="269dp"
         android:layout_marginStart="64dp"
+        android:layout_marginTop="250dp"
         android:layout_marginEnd="93dp"
         android:backgroundTint="@color/colorAccent"
         android:fontFamily="@font/allerta_stencil"
@@ -63,11 +60,9 @@
         android:text="Game Over, Team 1 Wins!!!"
         android:textAllCaps="false"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.415" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
