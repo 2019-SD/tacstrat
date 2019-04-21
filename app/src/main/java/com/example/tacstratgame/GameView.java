@@ -19,7 +19,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private CommandMenu commandMenu;
     private Game game;
     private MenuSet menuSet;
-    private static int turn = 1;
+
 
     public GameView(Context context, Game game, MenuSet menuSet) {
         super(context);
@@ -35,12 +35,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         float y0 = screenHeight - (screenHeight / 4);
         commandMenu = new CommandMenu(x0, y0, 0, screenHeight);
 
-    }
-
-    public static int getTurn() { return turn; }
-
-    public static void setTurn(int turn) {
-        GameView.turn = turn;
     }
 
     @Override
@@ -100,6 +94,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 } else {
                     menuSet.updateTileInfo(tile);
                     menuSet.updatePlayerDisplay(tile.getUnit());
+
                     if(map.drawingMove()){
                         if (map.canMove(map.getX(x),map.getY(y))){
                             map.moveUnit(map.getX(x), map.getY(y));
@@ -123,8 +118,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         game.invalidate();
                         return true;
                     }
-                    else if(tile.hasUnit()){
-                        menuSet.setActionDrawValue(true);
+                    else if(tile.hasUnit() ){
+                        if ( tile.getUnit().getTeam() == map.getTurn() ) {
+                            menuSet.setActionDrawValue(true);
+                        }
                         menuSet.setPlayerDrawValue(true);
                     }
                 }

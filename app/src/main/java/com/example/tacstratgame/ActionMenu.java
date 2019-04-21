@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
+import java.util.ArrayList;
+
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
 
@@ -105,7 +107,14 @@ public class ActionMenu extends ScrollView {
             @Override
             public void onClick(View v) {
                 drawValue = false;
-                map.defend(tile.getUnit());
+                map.endTurn();
+                ArrayList<Unit> unitList = map.getUnitArray();
+                for ( Unit u : unitList ) {
+                    u.setHasMoved(0);
+                    u.setHasAttacked(0);
+                    u.setHasDefended(0);
+                    u.setHasHealed(0);
+                }
                 menuSet.setTileDrawValue(false);
                 menuSet.setPlayerDrawValue(false);
                 menuSet.updateVisibility();

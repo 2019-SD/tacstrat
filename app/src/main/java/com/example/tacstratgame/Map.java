@@ -27,9 +27,11 @@ public class Map {
     private boolean[][] visited;
     private ArrayList<Unit> unitList;
     private Unit movingUnit;
+    private int turn;
 
     public Map(int mapNum, Resources res) {
         drawMode = 0;
+        turn = 1;
         unitList = new ArrayList<Unit>();
         resources = res;
         loadMap(mapNum);
@@ -68,6 +70,14 @@ public class Map {
         gridPaint.setColor(WHITE);
     }
 
+    public int getTurn() { return turn; }
+    public void endTurn() {
+        if ( turn == 1 ) {
+            turn = 2;
+        } else {
+            turn = 1;
+        }
+    }
     //not currently being used
     public void setTile(int x, int  y,Tile tile){
         map[x][y] = tile;
@@ -265,7 +275,7 @@ public class Map {
         movingUnit = unit;
 
         // Ensure unit is on the right team and that they haven't moved already this turn
-        if ( unit.getTeam() == GameView.getTurn() && unit.getHasMoved() == 0 ) {
+        if ( unit.getTeam() == turn && unit.getHasMoved() == 0 && unit.getHasDefended() == 0 ) {
             drawMode = 0; // Ensure this doesn't get drawn until its done
             visited = new boolean[width][height];
             int movement = unit.getMvmt();
@@ -356,7 +366,7 @@ public class Map {
         int beforeY;
 
         movingUnit = unit;
-        if ( unit.getTeam() == GameView.getTurn() && unit.getHasAttacked() == 0 ) {
+        if ( unit.getTeam() == turn && unit.getHasAttacked() == 0 && unit.getHasDefended() == 0 ) {
             drawMode = 0; // Ensure this doesn't get drawn until its done
             visited = new boolean[width][height];
             int attack = unit.getRange();
@@ -410,7 +420,7 @@ public class Map {
         if(visited[x][y]){
             if(map[x][y].hasUnit()){
                 Unit unit = map[x][y].getUnit();
-                if ( unit.getTeam() != GameView.getTurn() ) {
+                if ( unit.getTeam() != turn ) {
                     unit.setHp(unit.getHp() - (movingUnit.getAttack() - unit.getDefense()));
                     movingUnit.setHasAttacked(1);
                     if (unit.getHp() <= 0) {
@@ -442,7 +452,7 @@ public class Map {
         if (visited[x][y]) {
             if (map[x][y].hasUnit()) {
                 Unit unit = map[x][y].getUnit();
-                if ( unit.getTeam() == GameView.getTurn() && unit.getHasHealed() == 0 ) {
+                if ( unit.getTeam() == turn && unit.getHasHealed() == 0 ) {
                     unit.setHp(unit.getHp() + ((Medic) movingUnit).getHeal()); //Will only be here if movingUnit is a medic
                     if (unit.getHp() > unit.getHpMax()) {
                         unit.setHp(unit.getHpMax());
