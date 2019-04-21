@@ -12,4 +12,6 @@
     <string name="level__1">Level 1</string>
     <string name="level_4">Level 4</string>
     <string name="level__4">Level 4</string>
+    <string name="level_num">                 1 - 5</string>
+    <string name="load">Load</string>
 </resources>

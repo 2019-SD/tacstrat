@@ -39,9 +39,8 @@ public class MainActivity extends Activity {
                         @Override
                         public void onClick(View v) {
                             //Initialize edit text
-                            final EditText mEdit = (EditText)findViewById(R.id.editText3);
+                            final EditText mEdit = findViewById(R.id.editText3);
                             String level = mEdit.getText().toString();
-                            Game game;
                             int levelActual = Integer.parseInt(level);
                             if (levelActual  <= 5) {
                                 setContentView(new Game(v.getContext(), levelActual));
@@ -49,8 +48,7 @@ public class MainActivity extends Activity {
                         }
                     });
 
-                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
             }
         });
