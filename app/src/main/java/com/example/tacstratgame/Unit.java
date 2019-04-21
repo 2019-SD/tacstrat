@@ -18,6 +18,7 @@ public interface Unit {
     int getX();
     int getY();
     int getImage();
+    int getTempDefense();
     String getName();
 
     void setHasHealed( int hasHealed );
@@ -33,4 +34,7 @@ public interface Unit {
     void setX(int x);
     void setY(int y);
     void setName(String name);
+    void setActive();
+    void setWait();
+    void setTempDefense(int tempDefense);
 }

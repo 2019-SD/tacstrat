@@ -68,7 +68,7 @@ public class ActionMenu extends ScrollView {
         endTurn.setText("End Turn");
         endTurn.setTextSize(18);
         endTurn.setGravity(CENTER | CENTER_HORIZONTAL);
-        special.setText("Special");
+        special.setText("Heal");
         special.setTextSize(18);
         special.setGravity(CENTER | CENTER_HORIZONTAL);
 
@@ -114,6 +114,10 @@ public class ActionMenu extends ScrollView {
                     u.setHasAttacked(0);
                     u.setHasDefended(0);
                     u.setHasHealed(0);
+                    if(u.getTempDefense() > 0) {
+                        u.setTempDefense(u.getTempDefense() - 50); //number = amount defend boosts by
+                    }
+                    u.setActive();
                 }
                 menuSet.setTileDrawValue(false);
                 menuSet.setPlayerDrawValue(false);
@@ -146,16 +150,25 @@ public class ActionMenu extends ScrollView {
 
     public void setDrawValue(boolean value)  {
         if(value) { //Adds the special button if the menu is being drawn and a medic is selected
-            if (tile != null && tile.getUnit() instanceof Medic) {
-                layout.removeView(special); //Have to remove it before it is added to make sure multiple don't get added
-                special.setText("Heal");
-                layout.addView(special);
-                this.setScrollbarFadingEnabled(false);
-            } else {
-                layout.removeView(special); //Will remove the button or do nothing if it is not already added
-                special.setText("Special");
-                this.setScrollbarFadingEnabled(true);
+            layout.removeView(attack);
+            if (tile != null && tile.getUnit().getHasAttacked() == 0 && tile.getUnit().getHasDefended() == 0 && tile.getUnit().getHasHealed() == 0) {
+                layout.addView(attack);
             }
+            layout.removeView(move);
+            if (tile != null && tile.getUnit().getHasMoved() == 0 && tile.getUnit().getHasDefended() == 0){
+                layout.addView(move);
+            }
+            layout.removeView(defend);
+            if (tile != null && tile.getUnit().getHasAttacked() == 0 && tile.getUnit().getHasDefended() == 0 && tile.getUnit().getHasHealed() == 0) {
+                layout.addView(defend);
+            }
+            layout.removeView(special);
+            if (tile != null && tile.getUnit() instanceof Medic && tile.getUnit().getHasAttacked() == 0 && tile.getUnit().getHasDefended() == 0) {
+                layout.addView(special);
+            }
+            //So the endTurn button is on bottom
+            layout.removeView(endTurn);
+            layout.addView(endTurn);
         }
         drawValue = value;
 

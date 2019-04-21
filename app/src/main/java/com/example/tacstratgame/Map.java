@@ -350,6 +350,9 @@ public class Map {
         movingUnit.setX(x);
         movingUnit.setY(y);
         movingUnit.setHasMoved(1);
+        if(movingUnit.getHasAttacked() == 1){
+            movingUnit.setWait();
+        }
     }
 
     /**
@@ -421,8 +424,14 @@ public class Map {
             if(map[x][y].hasUnit()){
                 Unit unit = map[x][y].getUnit();
                 if ( unit.getTeam() != turn ) {
-                    unit.setHp(unit.getHp() - (movingUnit.getAttack() - unit.getDefense()));
+                    int attackPower = (movingUnit.getAttack() - unit.getDefense() - unit.getTempDefense());
+                    if (attackPower > 0){
+                        unit.setHp(unit.getHp() - attackPower);
+                    }
                     movingUnit.setHasAttacked(1);
+                    if (movingUnit.getHasMoved() == 1){
+                        movingUnit.setWait();
+                    }
                     if (unit.getHp() <= 0) {
                         unitList.remove(unit);
                         map[x][y].setUnit(null);
@@ -439,7 +448,9 @@ public class Map {
      * @param unit Unit who is defending
      */
     public void defend(Unit unit){
-        System.out.println("DEFENDING!!!!!!");
+        unit.setHasDefended(1);
+        unit.setTempDefense(100); //Twice what defend actually boosts by
+        unit.setWait();
     }
 
     /**
@@ -458,6 +469,7 @@ public class Map {
                         unit.setHp(unit.getHpMax());
                     }
                     unit.setHasHealed(1);
+                    unit.setWait();
                 }
             }
         }

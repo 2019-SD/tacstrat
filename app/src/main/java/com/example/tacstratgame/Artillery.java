@@ -6,7 +6,7 @@ public class Artillery implements Unit {
     private int defense = 70;
     private int hp = 300;
     private int hpMax = 300;
-    private int mvmt = 0;
+    private int mvmt = 1;
     private int range = 3;
     private int x;
     private int y;
@@ -15,12 +15,21 @@ public class Artillery implements Unit {
     private int hasAttacked;
     private int hasDefended;
     private int image;
+    private int activeImage;
+    private int waitImage = R.drawable.robot_wait;
     private String name = "Artillery";
+    private int tempDefense;
 
     public Artillery(int x, int y, int team) {
         this.x = x;
         this.y = y;
         this.team = team;
+        if (team == 1){
+            activeImage = R.drawable.robot;
+        }else{
+            activeImage = R.drawable.robot_2;
+        }
+        image = activeImage;
         hasMoved = 0;
         hasAttacked = 0;
         hasDefended = 0;
@@ -45,14 +54,9 @@ public class Artillery implements Unit {
     public int getRange(){ return range; }
     public int getX() { return x; }
     public int getY() { return y; }
-    public int getImage(){
-        if(this.team == 1) {
-            image = R.drawable.robot;
-        } else if(this.team == 2) {
-            image = R.drawable.robot_2;
-        }
-        return image; }
+    public int getImage(){ return image; }
     public String getName() { return name; }
+    public int getTempDefense() { return tempDefense; }
 
     @Override
     public void setHasHealed(int hasHealed) {
@@ -71,6 +75,18 @@ public class Artillery implements Unit {
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
     public void setName(String name) { this.name = name; }
+    public void setActive(){ this.image = activeImage; }
+    public void setTempDefense(int tempDefense){ this.tempDefense = tempDefense; }
+
+    public void setWait() {
+        if(image == activeImage){
+            image = waitImage;
+        }else{
+            image = activeImage;
+        }
+    }
+
+
 
     public void printStats( ) {
         System.out.printf( "Artillery Stats:\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", attack, defense, hp, mvmt, range );

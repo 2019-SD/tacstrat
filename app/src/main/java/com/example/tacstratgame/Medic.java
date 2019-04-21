@@ -18,12 +18,21 @@ public class Medic implements Unit {
     private int hasDefended;
     private int hasHealed;
     private int image;
+    private int activeImage;
+    private int waitImage = R.drawable.medicbot_wait;
     private String name = "Medic";
+    private int tempDefense;
 
     public Medic(int x, int y, int team){
         this.x = x;
         this.y = y;
         this.team = team;
+        if (team == 1){
+            activeImage = R.drawable.medicbot;
+        }else{
+            activeImage = R.drawable.medicbot_2;
+        }
+        image = activeImage;
         hasMoved = 0;
         hasAttacked = 0;
         hasDefended = 0;
@@ -58,14 +67,9 @@ public class Medic implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
-    public int getImage(){
-        if(this.team == 1) {
-            image = R.drawable.medicbot;
-        } else if(this.team == 2) {
-            image = R.drawable.medicbot_2;
-        }
-        return image; }
+    public int getImage(){ return image; }
     public String getName() { return name; }
+    public int getTempDefense() { return tempDefense; }
 
     // Setters
 
@@ -95,7 +99,16 @@ public class Medic implements Unit {
     public void setX(int x) { this.x = x; }
     public void setY(int y) { this.y = y; }
     public void setName(String name) { this.name = name; }
+    public void setActive(){ this.image = activeImage; }
+    public void setTempDefense(int tempDefense){ this.tempDefense = tempDefense; }
 
+    public void setWait() {
+        if(image == activeImage){
+            image = waitImage;
+        }else{
+            image = activeImage;
+        }
+    }
 
     public void printStats( ) {
         System.out.printf( "Medic Stats:\n Heal: %d\n Attack: %d\n Defense: %d\n Health Points: %d\n Movement: %d\n Attack Range: %d\n", heal, attack, defense, hp, mvmt, range );
