@@ -1,6 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--Map built with width in hex, height in hex, then the bottom row sequentially, then the row above, etc.-->
+
+    <array name="level0">
+        <item>#B</item>
+        <item>#F</item>
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav1</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav1</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav1</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item><item>cav1</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>f</item>
+        <item>f</item><item>cav1</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item><item>cav2</item>
+        <item>f</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>b</item>
+        <item>b</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>f</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+
+
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+        <item>w</item>
+    </array>
+
     <array name="level1">
         <item>#B</item>
         <item>#F</item>
