@@ -14,7 +14,7 @@ public class Infantry implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
-    private int image = R.drawable.alien;
+    private int image;
     private String name = "Infantry";
 
     public Infantry(int x, int y, int team){
@@ -55,7 +55,13 @@ public class Infantry implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
-    public int getImage(){ return image; }
+    public int getImage(){
+        if(this.team == 1) {
+            image = R.drawable.alien;
+        } else if(this.team == 2) {
+            image = R.drawable.alien_2;
+        }
+        return image; }
     public String getName() { return name; }
 
     @Override

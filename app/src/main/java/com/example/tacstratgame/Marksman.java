@@ -15,7 +15,7 @@ public class Marksman implements Unit {
     private int hasMoved;
     private int hasAttacked;
     private int hasDefended;
-    private int image = R.drawable.cowboy;
+    private int image;
     private String name = "Marksman";
 
     public Marksman(int x, int y, int team){
@@ -56,7 +56,13 @@ public class Marksman implements Unit {
     }
     public int getX() { return x; }
     public int getY() { return y; }
-    public int getImage(){ return image; }
+    public int getImage(){
+        if(this.team == 1) {
+            image = R.drawable.cowboy;
+        } else if(this.team == 2) {
+            image = R.drawable.cowboy_2;
+        }
+        return image; }
     public String getName() { return name; }
 
     @Override

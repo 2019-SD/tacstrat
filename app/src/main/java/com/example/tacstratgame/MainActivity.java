@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
         // Initialize start button
         Button start = findViewById(R.id.button);
 
+
         // Listener for start button to switch to GameView and locks game to fullscreen
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +33,7 @@ public class MainActivity extends Activity {
 
             }
         });
+
 
     }
 }
