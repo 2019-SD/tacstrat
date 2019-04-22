@@ -17,7 +17,7 @@ public class ExampleUnitTest {
 
     @Test
     public void infantryValues() {
-        Infantry inf = new Infantry( 50,50 );
+        Infantry inf = new Infantry( 50,50, 1 );
         assertEquals( inf.getAttack(), 100 );
         assertEquals( inf.getDefense(), 50 );
         assertEquals( inf.getHp(), 300 );
@@ -50,7 +50,7 @@ public class ExampleUnitTest {
 
     @Test
     public void marksmanValues() {
-        Marksman mrk = new Marksman( 50,50 );
+        Marksman mrk = new Marksman( 50,50, 1 );
         assertEquals( mrk.getAttack(), 75 );
         assertEquals( mrk.getDefense(), 25 );
         assertEquals( mrk.getHp(), 200 );
@@ -83,7 +83,7 @@ public class ExampleUnitTest {
 
     @Test
     public void medicValues() {
-        Medic med = new Medic( 50,50 );
+        Medic med = new Medic( 50,50, 1 );
         assertEquals( med.getHeal() , 50 );
         assertEquals( med.getAttack(), 0 );
         assertEquals( med.getDefense(), 20 );
@@ -120,7 +120,7 @@ public class ExampleUnitTest {
 
     @Test
     public void cavalryValues() {
-        Cavalry inf = new Cavalry( 50,50 );
+        Cavalry inf = new Cavalry( 50,50, 1 );
         assertEquals( inf.getAttack(), 120 );
         assertEquals( inf.getDefense(), 60 );
         assertEquals( inf.getHp(), 400 );
@@ -153,7 +153,7 @@ public class ExampleUnitTest {
 
     @Test
     public void artilleryValues() {
-        Artillery inf = new Artillery( 50,50 );
+        Artillery inf = new Artillery( 50,50, 1 );
         assertEquals( inf.getAttack(), 150 );
         assertEquals( inf.getDefense(), 70 );
         assertEquals( inf.getHp(), 300 );
