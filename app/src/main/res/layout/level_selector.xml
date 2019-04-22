@@ -37,17 +37,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="139dp"
-        android:layout_marginEnd="120dp"
+        android:layout_width="112dp"
+        android:layout_height="224dp"
+        android:layout_marginEnd="150dp"
         android:layout_marginBottom="240dp"
-        android:rotation="90"
 
+        android:fontFamily="@font/allerta_stencil"
+        android:rotation="90"
         android:text="@string/levels"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="textStart"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button14" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
     <EditText
@@ -55,11 +56,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="350dp"
         android:ems="10"
         android:hint="@string/level_num"
         android:inputType="number"
         android:rotation="90"
+        android:singleLine="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
