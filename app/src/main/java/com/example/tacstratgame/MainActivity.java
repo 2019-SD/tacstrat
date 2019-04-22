@@ -42,8 +42,16 @@ public class MainActivity extends Activity {
                         //Initialize edit text
                         final EditText mEdit = findViewById(R.id.editText3);
                         String level = mEdit.getText().toString();
-                        int levelActual = Integer.parseInt(level);
-                        if (levelActual <= 5) {
+                        if (!level.isEmpty()) {
+                            int levelActual = Integer.parseInt(level);
+                            if (levelActual <= 5) {
+                                setContentView(new Game(v.getContext(), ref, levelActual));
+                            } else {
+                                levelActual = 5;
+                                setContentView(new Game(v.getContext(), ref, levelActual));
+                            }
+                        } else {
+                            int levelActual = 1;
                             setContentView(new Game(v.getContext(), ref, levelActual));
                         }
                     }

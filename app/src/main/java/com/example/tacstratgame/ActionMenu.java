@@ -26,6 +26,7 @@ public class ActionMenu extends ScrollView {
     private Button move;
     private Button defend;
     private Button endTurn;
+    private Button exit;
     private Button special;
 
     public ActionMenu(Context context) {
@@ -43,6 +44,7 @@ public class ActionMenu extends ScrollView {
         move = new Button(context);
         defend = new Button(context);
         endTurn = new Button(context);
+        exit = new Button(context);
         special = new Button(context);
 
         attack.setWidth((int) (screenHeight / 4));
@@ -53,6 +55,8 @@ public class ActionMenu extends ScrollView {
         defend.setHeight((int) (screenWidth / 9));
         endTurn.setWidth((int) (screenHeight / 4));
         endTurn.setHeight((int) (screenWidth / 9));
+        exit.setWidth((int) (screenHeight / 4));
+        exit.setHeight((int) (screenWidth / 9));
         special.setWidth((int) (screenHeight / 4));
         special.setHeight((int) (screenWidth / 9));
 
@@ -68,6 +72,9 @@ public class ActionMenu extends ScrollView {
         endTurn.setText("End Turn");
         endTurn.setTextSize(18);
         endTurn.setGravity(CENTER | CENTER_HORIZONTAL);
+        exit.setText("Exit");
+        exit.setTextSize(18);
+        exit.setGravity(CENTER | CENTER_HORIZONTAL);
         special.setText("Heal");
         special.setTextSize(18);
         special.setGravity(CENTER | CENTER_HORIZONTAL);
@@ -124,6 +131,12 @@ public class ActionMenu extends ScrollView {
                 menuSet.updateVisibility();
             }
         });
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                map.ref.buildMainMenu();
+            }
+        });
         special.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,6 +153,7 @@ public class ActionMenu extends ScrollView {
         layout.addView(move);
         layout.addView(defend);
         layout.addView(endTurn);
+        layout.addView(exit);
         this.addView(layout);
         this.setRotation(90);
     }
@@ -169,6 +183,9 @@ public class ActionMenu extends ScrollView {
             //So the endTurn button is on bottom
             layout.removeView(endTurn);
             layout.addView(endTurn);
+
+            layout.removeView(exit);
+            layout.addView(exit);
         }
         drawValue = value;
 
